@@ -11,6 +11,8 @@
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+    <script src="/frontPage.js" defer ></script>
+
 </head>
 
 <body>
@@ -106,21 +108,5 @@
     </div>
 </div>
 
-<script>
-    window.addEventListener('scroll', reveal);
-
-    function reveal(){
-        var reveals= document.querySelectorAll('.reveal');
-        for (var i=0; i< reveals.length; i++){
-            var windowheight = window.innerHeight;
-            var revealtop = reveals[i].getBoundingClientRect().top;
-            var revealpoint= 100;
-            if(revealtop < windowheight - revealpoint){
-                reveals[i].classList.add('active');
-            }
-        }
-    }
-    reveal();
-</script>
 </body>
 </html>
