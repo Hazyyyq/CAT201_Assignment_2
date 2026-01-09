@@ -1,75 +1,362 @@
+@import url('https://fonts.googleapis.com/css2?family=DotGothic16&family=Roboto+Mono:wght@400;700&display=swap');
+
+/* --- 1. FULL PAGE LAYOUT & BACKGROUNDS --- */
+.pageWrapper {
+    min-height: 100vh;
+    background-color: #050505;
+    position: relative;
+    padding-top: 100px; /* Space for fixed nav */
+    padding-bottom: 50px;
+    overflow-x: hidden; /* Prevents horizontal scrollbar from moving background elements */
+    overflow-y: hidden; /* Ensures background blobs don't stretch page */
+}
+
+/* NEW: Slowly moving neon energy blobs */
+.pageWrapper::before,
+.pageWrapper::after {
+    content: '';
+    position: absolute;
+    width: 60vmax; /* Large relative size */
+    height: 60vmax;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(102, 252, 241, 0.12) 0%, rgba(102, 252, 241, 0) 70%);
+    z-index: 0; /* Lowest level */
+    animation: floatAnimation 20s infinite alternate ease-in-out;
+    pointer-events: none;
+}
+
+/* Blob 1 Position */
+.pageWrapper::before {
+    top: -20vmax;
+    left: -20vmax;
+}
+
+/* Blob 2 Position & delayed animation */
+.pageWrapper::after {
+    bottom: -20vmax;
+    right: -20vmax;
+    animation-delay: -10s; /* Start halfway through the animation cycle */
+    background: radial-gradient(circle, rgba(50, 100, 255, 0.1) 0%, rgba(102, 252, 241, 0) 70%); /* Slightly bluer tint */
+}
+
+@keyframes floatAnimation {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+    50% {
+        transform: translate(10%, 5%) scale(1.1);
+    }
+    100% {
+        transform: translate(-5%, 10%) scale(0.9);
+    }
+}
+
+/* Recreating the Cyberpunk Grid Background */
+.bgGrid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+            linear-gradient(rgba(102, 252, 241, 0.05) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(102, 252, 241, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+    z-index: 1; /* Sits above the glowing blobs */
+    pointer-events: none;
+}
+
+/* Dark edges vignette */
+.bgVignette {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, transparent 20%, #050505 100%);
+    z-index: 2; /* Sits above grid to darken edges */
+    pointer-events: none;
+}
+
+/* --- 2. MAIN CONTAINER (The "HUD") --- */
 .cart-container {
-    max-width: 900px;
-    margin: 100px auto;
-    padding: 20px;
+    position: relative;
+    z-index: 10; /* Highest priority, sits on top of all backgrounds */
+    max-width: 1000px;
+    margin: 0 auto;
+    width: 90%;
+
+    /* Tech Border Look */
+    border: 1px solid rgba(102, 252, 241, 0.3);
+    background: rgba(10, 10, 10, 0.85);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 30px rgba(102, 252, 241, 0.15); /* Increased glow slightly */
+
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- 3. HEADER SECTION --- */
+.header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 30px;
+    border-bottom: 2px solid rgba(102, 252, 241, 0.2);
+    background: rgba(102, 252, 241, 0.05);
 }
 
 .cart-title {
-    font-size: 40px;
-    font-weight: bold;
-    margin-bottom: 40px;
-    text-align: center;
+    font-family: 'DotGothic16', sans-serif;
+    font-size: 2.5rem;
+    color: #fff;
+    margin: 0;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.blink {
+    animation: blinker 1s linear infinite;
+    color: #66fcf1;
+}
+
+@keyframes blinker {
+    50% { opacity: 0; }
+}
+
+.item-count {
+    font-family: 'Roboto Mono', monospace;
+    color: #66fcf1;
+    font-size: 0.9rem;
+}
+
+/* --- 4. CART ITEMS --- */
+.cart-grid {
+    padding: 0;
 }
 
 .cart-item {
     display: flex;
-    padding: 20px;
-    border-bottom: 1px solid #ddd;
     align-items: center;
+    padding: 25px 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: background 0.3s ease;
+}
+
+.cart-item:hover {
+    background: rgba(102, 252, 241, 0.05);
+}
+
+/* Image with Tech Frame */
+.img-wrapper {
+    width: 100px;
+    height: 100px;
+    border: 1px solid #333;
+    padding: 2px;
+    margin-right: 25px;
+    background: #000;
 }
 
 .cart-item img {
-    width: 100px;
-    border-radius: 10px;
-    margin-right: 20px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter:  contrast(1.1);
 }
 
-.empty-msg {
-    text-align: center;
-}
-
+/* Item Text Info */
 .item-info {
     flex: 1;
 }
 
 .item-name {
-    font-size: 20px;
-    font-weight: 600;
-    color: #1d1d1f;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 5px;
+    text-transform: uppercase;
 }
 
-.item-details {
-    color: #86868b;
-    margin-top: 5px;
+.item-specs {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.85rem;
+    color: #888;
+    display: flex;
+    gap: 15px;
+}
+
+.item-specs span {
+    background: #1a1a1a;
+    padding: 2px 6px;
+    border-radius: 4px;
+    border: 1px solid #333;
+}
+
+/* Price & Trash Can */
+.price-action-group {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
 }
 
 .item-price {
-    font-size: 20px;
-    font-weight: 600;
-}
-
-.remove-btn {
-    color: #0066cc;
-    background: none;
-    border: none;
-    cursor: pointer;
-    margin-top: 10px;
-    text-decoration: underline;
-}
-
-.total-section {
-    margin-top: 40px;
-    text-align: right;
-    font-size: 24px;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 1.2rem;
+    color: #66fcf1;
     font-weight: bold;
 }
 
-.checkout-btn {
-    background-color: #0071e3;
-    color: white;
-    padding: 15px 50px;
-    border-radius: 10px;
-    text-decoration: none;
-    display: inline-block;
+.remove-btn {
+    background: transparent;
+    border: none;
+    color: #555;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: 0.3s;
+}
+
+.remove-btn:hover {
+    color: #ff4d4d;
+    transform: scale(1.1);
+    text-shadow: 0 0 8px #ff4d4d;
+}
+
+/* --- 5. SUMMARY PANEL --- */
+.summary-panel {
+    background: #000;
+    padding: 30px;
+    border-top: 2px solid rgba(102, 252, 241, 0.3);
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    font-family: 'Roboto Mono', monospace;
+    color: #aaa;
+    font-size: 0.9rem;
+}
+
+.total-row {
     margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px dashed #333;
+    font-size: 1.5rem;
+    color: #fff;
+    font-weight: bold;
+}
+
+.neon-total {
+    color: #66fcf1;
+    text-shadow: 0 0 10px rgba(102, 252, 241, 0.6);
+}
+
+/* --- 6. BUTTONS --- */
+.action-buttons {
+    margin-top: 30px;
+    display: flex;
+    gap: 20px;
+    justify-content: flex-end;
+}
+
+.checkout-btn {
+    background: #66fcf1;
+    color: #000;
+    border: none;
+    padding: 15px 40px;
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+    transition: 0.3s;
+}
+
+.checkout-btn:hover {
+    background: #fff;
+    box-shadow: 0 0 20px rgba(102, 252, 241, 0.5);
+    transform: translateY(-2px);
+}
+
+.clear-btn {
+    background: transparent;
+    color: #ff4d4d;
+    border: 1px solid #ff4d4d;
+    padding: 15px 30px;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.clear-btn:hover {
+    background: rgba(255, 77, 77, 0.1);
+    box-shadow: 0 0 15px rgba(255, 77, 77, 0.3);
+}
+
+/* --- 7. EMPTY STATE --- */
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: #555;
+}
+
+.empty-state i {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    opacity: 0.5;
+}
+
+.empty-state p {
+    font-family: 'DotGothic16', sans-serif;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.return-link {
+    color: #66fcf1;
+    font-family: 'Roboto Mono', monospace;
+    text-decoration: none;
+    border-bottom: 1px solid #66fcf1;
+    padding-bottom: 2px;
+}
+
+/* --- MOBILE RESPONSIVE --- */
+@media (max-width: 768px) {
+    .cart-container {
+        width: 100%;
+        border-left: none;
+        border-right: none;
+    }
+
+    .header-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .cart-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .price-action-group {
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 1px dashed #333;
+        padding-top: 15px;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+    }
+
+    .checkout-btn, .clear-btn {
+        width: 100%;
+    }
 }

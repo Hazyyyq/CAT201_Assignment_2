@@ -1,25 +1,33 @@
 import {useEffect, useState} from 'react';
 import {Link, useLocation} from 'react-router-dom';
-import styles from '../style/FrontPage.module.css'; // Keeps hero/product styles modular
+import styles from '../style/FrontPage.module.css';
 import Footer from "../components/Footer.jsx";
 
 function FrontPage() {
     const [isOpen, setIsOpen] = useState(false);
+
+    // --- 1. ADD CART COUNT STATE ---
+    const [cartCount, setCartCount] = useState(0);
+
     const location = useLocation();
+
+    // --- 2. LOAD CART COUNT ON MOUNT ---
+    useEffect(() => {
+        // Read the cart from local storage
+        const storedCart = JSON.parse(localStorage.getItem('kakiCart')) || [];
+        // Update the badge number
+        setCartCount(storedCart.length);
+    }, []);
 
     // Scroll Reveal Logic
     useEffect(() => {
-        // 1. Handle URL Hash Scrolling
         if (location.hash) {
             const element = document.querySelector(location.hash);
             if (element) element.scrollIntoView({ behavior: 'smooth' });
         }
 
-        // 2. Scroll Animation
         const reveal = () => {
-            // Keep using styles['info-card'] because content is still modular
             let reveals = document.getElementsByClassName(styles['info-card']);
-
             for (let i = 0; i < reveals.length; i++) {
                 let windowheight = window.innerHeight;
                 let revealtop = reveals[i].getBoundingClientRect().top;
@@ -37,7 +45,6 @@ function FrontPage() {
         return () => window.removeEventListener('scroll', reveal);
     }, [location]);
 
-    // Helper for nav clicks
     const scrollToSection = (e, id) => {
         e.preventDefault();
         setIsOpen(false);
@@ -49,14 +56,11 @@ function FrontPage() {
     };
 
     return (<>
-        {/* 1. NAV IS NOW GLOBAL (Matches AboutPage) */}
         <nav className="nav">
-            {/* 1. LEFT: LOGO */}
             <Link to="/" className="logo">
                 KAKI GAMERZ<span className="dot"></span>
             </Link>
 
-            {/* 2. CENTER: NAV LINKS */}
             <div className="nav-links desktop-menu">
                 <Link to="/#phone" onClick={(e) => scrollToSection(e, 'phone')}>KakiPhone</Link>
                 <Link to="/#watch" onClick={(e) => scrollToSection(e, 'watch')}>KakiWatch</Link>
@@ -65,15 +69,19 @@ function FrontPage() {
                 <Link to="/#about" onClick={(e) => scrollToSection(e, 'about')}>About Us</Link>
             </div>
 
-            {/* 3. RIGHT: GROUPED ACTIONS (Fixes the Gap) */}
             <div className="nav-actions">
-                <Link to="/cart" className={styles['cart-icon-container']}>
-                    <span id="cart-badge" className={`fa-stack fa-lg ${styles['has-badge']}`} data-count="0">
+                {/* --- 3. UPDATED CART ICON LOGIC --- */}
+                {/* Note: Changed to standard string class "cart-icon-container" to match your global CSS file */}
+                <Link to="/cart" className="cart-icon-container">
+                    <span
+                        id="cart-badge"
+                        className="fa-stack fa-lg has-badge"
+                        data-count={cartCount} // This injects the number into the CSS
+                    >
                       <i className="fa fa-circle fa-stack-2x"></i>
                       <i className="fa fa-shopping-cart fa-stack-1x fa-inverse"></i>
                     </span>
                 </Link>
-
 
                 <div className="nav-button">
                     <Link to ="/admin" className="nav-pill-btn">Admin Panel</Link>
@@ -81,13 +89,11 @@ function FrontPage() {
                 </div>
             </div>
 
-            {/* SIDEBAR TRIGGER */}
             <div className="sidebar" onClick={() => setIsOpen(!isOpen)}>
                 <i className={`fa ${isOpen ? "fa-times" : "fa-bars"}`}></i>
             </div>
         </nav>
 
-        {/* Mobile Overlay is Global */}
         <div className={`mobile-nav-overlay ${isOpen ? 'active' : ''}`}>
             <Link to="/#phone" onClick={(e) => scrollToSection(e, 'phone')}>KakiPhone</Link>
             <Link to="/#watch" onClick={(e) => scrollToSection(e, 'watch')}>KakiWatch</Link>
@@ -96,7 +102,6 @@ function FrontPage() {
             <Link to="/#about" onClick={(e) => scrollToSection(e, 'about')}>About Us</Link>
         </div>
 
-        {/* --- MAIN CONTENT REMAINS MODULAR --- */}
         <section id="home" className={`${styles['hero-section']} ${styles['dark-theme']} ${styles['short-hero']}`}>
             <img
                 src="https://i.pinimg.com/originals/cd/f4/95/cdf4951a69fe542e2b7d6a07aa234a1b.gif"
@@ -108,7 +113,6 @@ function FrontPage() {
             </h1>
         </section>
 
-        {/* --- PHONE INTRO (ID: phone) --- */}
         <section id="phone" className={`${styles['hero-section']} ${styles['dark-theme']}`}>
             <img
                 src="https://cdn.mos.cms.futurecdn.net/hUQHCvvKAHtNGxtLiB8rjP.gif"
@@ -117,7 +121,6 @@ function FrontPage() {
             />
         </section>
 
-        {/* PHONE CARD SECTION */}
         <section className={`${styles['hero-section']} ${styles['dark-theme']}`}>
             <img
                 src="https://miro.medium.com/v2/1*aTmCQXNJDgO7oQ371gRVvg.gif"
@@ -131,7 +134,6 @@ function FrontPage() {
             </div>
         </section>
 
-        {/* --- WATCH INTRO (ID: watch) --- */}
         <section id="watch" className={`${styles['hero-section']} ${styles['dark-theme']}`}>
             <img
                 src="https://platform.theverge.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/3486306/APPLEWATCH_INTRO.0.gif"
@@ -140,7 +142,6 @@ function FrontPage() {
             />
         </section>
 
-        {/* WATCH CARD SECTION */}
         <section className={`${styles['hero-section']} ${styles['dark-theme']}`}>
             <img
                 src="https://i.pinimg.com/originals/66/97/1d/66971d5b5aeaf2a98116ccb97e0ca10d.gif"
@@ -154,7 +155,6 @@ function FrontPage() {
             </div>
         </section>
 
-        {/* --- TABLET INTRO (ID: tablet) --- */}
         <section id="tablet" className={`${styles['hero-section']} ${styles['dark-theme']}`}>
             <img
                 src="https://www.young-minds.sg/sites/default/files/inline-images/iPadAirgif.gif"
@@ -163,7 +163,6 @@ function FrontPage() {
             />
         </section>
 
-        {/* TABLET CARD SECTION */}
         <section className={`${styles['hero-section']} ${styles['dark-theme']}`}>
             <img
                 src="https://www.lowyat.net/wp-content/uploads/2024/05/Apple-iPad-Pro-M4-launch-8.jpg"
@@ -177,7 +176,6 @@ function FrontPage() {
             </div>
         </section>
 
-        {/* --- GAMES SECTION (ID: games) --- */}
         <section id="games" className={`${styles['hero-section']} ${styles['dark-theme']}`}>
             <img
                 src="https://i.pinimg.com/originals/f0/06/1d/f0061dcf4eb30dded5caeb4bb1730363.gif"
@@ -191,7 +189,6 @@ function FrontPage() {
             </div>
         </section>
 
-        {/* --- ABOUT SECTION (ID: about) --- */}
         <section id="about" className={`${styles['hero-section']} ${styles['dark-theme']} ${styles['short-hero']}`}>
             <img
                 src="https://i.pinimg.com/originals/cd/f4/95/cdf4951a69fe542e2b7d6a07aa234a1b.gif"

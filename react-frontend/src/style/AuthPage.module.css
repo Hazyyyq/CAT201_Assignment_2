@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
-/* Scoped to this component only */
 .loginContainer {
     display: flex;
     justify-content: center;
@@ -13,8 +12,44 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    position: relative; /* Essential for the absolute positioning of the navbar */
 }
 
+/* --- STANDARD WEB NAVBAR --- */
+.navbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 50px; /* Standard web spacing */
+    display: flex;
+    align-items: center;
+    z-index: 100;
+}
+
+/* --- HOME LINK (Standard Web Style) --- */
+.homeLink {
+    text-decoration: none;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600; /* Bold to look like a Logo/Brand */
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Space between arrow and text */
+    transition: 0.3s;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2); /* Improves readability on bg */
+}
+
+.homeLink:hover {
+    color: rgba(255, 255, 255, 0.8);
+    transform: translateX(-3px); /* Subtle movement to left indicating 'back' */
+}
+
+.homeLink i {
+    font-size: 20px;
+}
+
+/* --- EXISTING CARD STYLES --- */
 .wrapper {
     width: 90%;
     max-width: 420px;
@@ -27,25 +62,10 @@
     padding: 30px 40px;
     animation: floatIn 1s ease-out;
 }
-
 
 @keyframes floatIn {
     0% { opacity: 0; transform: translateY(30px); }
     100% { opacity: 1; transform: translateY(0); }
-}
-
-.wrapper {
-    width: 90%;
-    max-width: 420px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 2px solid rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(20px);
-    box-shadow: 0 0 20px rgba(0,0,0,0.5);
-    color: #fff;
-    border-radius: 15px;
-    padding: 30px 40px;
-
-    animation: floatIn 1s ease-out;
 }
 
 .wrapper h1{
@@ -153,3 +173,9 @@
     color: #fff;
 }
 
+/* Mobile Adjustment */
+@media (max-width: 600px) {
+    .navbar {
+        padding: 20px;
+    }
+}
