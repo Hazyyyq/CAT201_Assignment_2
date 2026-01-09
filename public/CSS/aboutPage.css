@@ -217,6 +217,7 @@ nav {
     justify-content: center;
     gap: 15px;
     margin-top: 10px;
+
 }
 
 .ManagerSocMed a {
@@ -236,6 +237,7 @@ nav {
 }
 
 /* Specific Social Colors */
+
 .fa-facebook { color: #3b5998; }
 .fa-instagram { color: #e1306c; }
 .fa-linkedin-square { color: #0077B5; }

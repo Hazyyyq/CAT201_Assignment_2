@@ -5,14 +5,49 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a0e7f99b-0edd-44c9-9cee-aee7cf954985" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/public/CSS/gamesPage.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/HTML/gamesPage.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/JavaScript/frontPage.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/react-frontend/.gitattributes" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/react-frontend/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/react-frontend/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/react-frontend/eslint.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/react-frontend/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/react-frontend/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/react-frontend/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/react-frontend/public/img/Aiman.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/react-frontend/public/img/Airil.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/react-frontend/public/img/Haziq.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/react-frontend/public/img/Johan.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/react-frontend/public/img/test.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/react-frontend/public/vid/GravitiGamerz.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/react-frontend/public/vid/GravitiGamerz_2.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/react-frontend/public/vid/intro.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/react-frontend/src/App.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/react-frontend/src/Data/games.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/react-frontend/src/PinPagePosition.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/react-frontend/src/assets/react.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/react-frontend/src/components/Footer.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/react-frontend/src/main.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/react-frontend/src/pages/AboutPage.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/react-frontend/src/pages/AdminPage.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/react-frontend/src/pages/CartPage.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/react-frontend/src/pages/FrontPage.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/react-frontend/src/pages/GamePage.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/react-frontend/src/pages/LoginPage.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/react-frontend/src/pages/ProductPage.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/react-frontend/src/pages/SignUpPage.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/react-frontend/src/style/AboutPage.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/react-frontend/src/style/AdminPage.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/react-frontend/src/style/AuthPage.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/react-frontend/src/style/CartPage.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/react-frontend/src/style/Footer.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/react-frontend/src/style/FrontPage.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/react-frontend/src/style/GamePage.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/react-frontend/src/style/ProductPage.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/react-frontend/src/style/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/react-frontend/vite.config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/CSS/frontPage.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/CSS/frontPage.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/HTML/frontPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/HTML/frontPage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/HTML/productPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/HTML/productPage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/CSS/aboutPage.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/CSS/aboutPage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/HTML/adminPageDesign.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/HTML/adminPageDesign.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/HTML/cartPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/HTML/cartPage.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,9 +57,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="JavaScript File" />
         <option value="HTML File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -58,7 +93,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/Hazyyyq/CAT201_Project.git&quot;,
-    &quot;accountId&quot;: &quot;c5c261cd-06e4-47b0-ae29-3e81d8fa07fe&quot;
+    &quot;accountId&quot;: &quot;8792ef71-fde1-4d68-96b8-3ed1c518a223&quot;
   }
 }</component>
   <component name="ProjectColorInfo">{
@@ -69,30 +104,44 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;JavaScript Debug.cartPage.html.executor&quot;: &quot;Run&quot;,
-    &quot;JavaScript Debug.frontPage.html.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;Node.js.app.js.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;aiman/feature/seller&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "JavaScript Debug.cartPage.html.executor": "Run",
+    "JavaScript Debug.frontPage.html.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Node.js.App.jsx.executor": "Run",
+    "Node.js.app.js.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "dart.analysis.tool.window.visible": "false",
+    "git-widget-placeholder": "haziq/fix/node.js-to-react.js",
+    "junie.onboarding.icon.badge.shown": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/haziq/Downloads/ComputerSciences/SEM 3/CAT201/IntelliJ/Assignmen_JoZiq/CAT201_Project/react-frontend/src",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "to.speed.mode.migration.done": "true",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\haziq\Downloads\ComputerSciences\SEM 3\CAT201\IntelliJ\Assignmen_JoZiq\CAT201_Project\react-frontend\src" />
+      <recent name="C:\Users\haziq\Downloads\ComputerSciences\SEM 3\CAT201\IntelliJ\Assignmen_JoZiq\CAT201_Project\react-frontend\src\style" />
+      <recent name="C:\Users\haziq\Downloads\ComputerSciences\SEM 3\CAT201\IntelliJ\Assignmen_JoZiq\CAT201_Project\react-frontend\src\pages" />
+      <recent name="C:\Users\haziq\Downloads\ComputerSciences\SEM 3\CAT201\IntelliJ\Assignmen_JoZiq\CAT201_Project" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.28238.7" />
-        <option value="bundled-js-predefined-d6986cc7102b-a71380e98a7c-JavaScript-IU-252.28238.7" />
+        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.26830.84" />
+        <option value="bundled-js-predefined-d6986cc7102b-3aa1da707db6-JavaScript-IU-252.26830.84" />
       </set>
     </attachedChunks>
   </component>
@@ -108,6 +157,9 @@
       <workItem from="1766755575243" duration="7838000" />
       <workItem from="1766985673026" duration="6247000" />
       <workItem from="1767200711572" duration="1588000" />
+      <workItem from="1767897320919" duration="271000" />
+      <workItem from="1767902620069" duration="888000" />
+      <workItem from="1767927761679" duration="16558000" />
     </task>
     <task id="LOCAL-00001" summary="Change airil name">
       <option name="closed" value="true" />

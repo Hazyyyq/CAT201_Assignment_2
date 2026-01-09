@@ -1,0 +1,239 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&display=swap');
+
+:root {
+
+    --bg-color: #000;
+    --accent-colour: #66fcf1;
+    --dot-color: rgba(255, 255, 255, 0.3);
+    --section-bg: #000;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background-color: var(--accent-colour);
+    border-radius: 50%;
+    margin-left: 5px;
+    vertical-align: top;
+    margin-top: 10px;
+}
+
+.logo {
+    color: #f5f5f7;
+    text-decoration: none;
+    font-family: 'Cinzel Decorative', cursive;
+    font-weight: 700;
+    font-size: 1.4rem;
+    flex-shrink: 0;
+    margin-right: 0;
+}
+
+.logo:hover {
+    color: #66fcf1;
+    text-shadow: 0 0 5px rgba(102, 252, 241, 0.6);
+}
+/* =========================================
+   1. NAVIGATION STYLES (Modular)
+   ========================================= */
+/* Sidebar Trigger (Mobile) */
+.sidebar {
+    display: none; /* Hidden on Desktop */
+}
+
+.sidebar i {
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Main Navigation Bar */
+.nav {
+    background-color: rgba(0, 0, 0, 0.8);
+    height: 60px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 233, 0.1);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+
+    /* Flex layout for the nav items */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Controls the space between the Cart and the Buttons */
+    text-decoration-line: none ;
+}
+
+/* Navigation Links Container */
+.nav-links {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    height: 100%;
+}
+
+.nav-links a {
+    color: #d6d6d6;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #66fcf1;
+    text-shadow: 0 0 5px rgba(102, 252, 241, 0.6);
+}
+
+/* Buttons */
+.nav-pill-btn {
+    background-color: #0071e3;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 200px;
+    text-decoration: none;
+    font-size: 13px;
+    transition: background-color 0.3s;
+    cursor: pointer;
+    border: none;
+    display: inline-block;
+}
+
+.nav-pill-btn:hover {
+    color: #66fcf1;
+    font-weight: bold;
+    text-shadow: 0 0 5px rgba(102, 252, 241, 0.6);
+}
+
+.nav-button {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+
+/* --- CART BADGE STYLES --- */
+.cart-icon-container {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 10px;
+    height: 100%; /* Ensures it centers vertically in nav */
+}
+
+/* 1. Icon Colors */
+.fa-circle {
+    color: #d6d6d6;
+    transition: color 0.3s;
+}
+
+.fa-shopping-cart {
+    color: #1d1d1f; /* Dark cart icon */
+}
+
+/* 2. Hover Effect */
+.cart-icon-container:hover .fa-circle {
+    color: #0071e3; /* Blue circle on hover */
+}
+
+/* 3. The Red Number Badge */
+.fa-stack[data-count]:after {
+    position: absolute;
+    top: -5px; /* Push it up slightly */
+    right: -8px; /* Push it to the right corner */
+
+    content: attr(data-count);
+    font-size: 10px; /* Small, readable text */
+    padding: 2px 5px; /* Pill shape padding */
+    border-radius: 10px; /* Rounded pill corners */
+
+    color: white;
+    background: #DF0000; /* Bright Red */
+    border: 2px solid #1a1a1a; /* Dark border to match navbar background (optional) or white */
+
+    line-height: 1;
+    font-weight: bold;
+    font-family: sans-serif;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    min-width: 15px;
+    text-align: center;
+}
+
+/* Hide badge if count is 0 */
+.fa-stack[data-count="0"]:after {
+    display: none;
+}
+
+/* =========================================
+   2. MOBILE MENU OVERLAY
+   ========================================= */
+.mobile-nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 45vh;
+    background: #000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    z-index: 999;
+    transform: translateY(-100%);
+    transition: transform 0.4s ease-in-out;
+}
+
+.mobile-nav-overlay.active {
+    transform: translateY(0);
+}
+
+.mobile-nav-overlay a {
+    color: white;
+    font-size: 1.5rem;
+    font-family: 'DotGothic16', sans-serif;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+
+/* Specific Social Colors */
+
+.fa-facebook { color: #3b5998; }
+.fa-instagram { color: #e1306c; }
+.fa-linkedin-square { color: #0077B5; }
+
+/* =========================================
+   8. RESPONSIVE MEDIA QUERIES
+   ========================================= */
+@media (max-width: 768px) {
+
+    .desktop-menu {
+        display: none;
+    }
+
+    /* Show sidebar icon */
+    .sidebar {
+        display: block;
+    }
+}
