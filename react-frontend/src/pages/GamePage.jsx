@@ -21,7 +21,7 @@ const GamesPage = () => {
 
         // Fetch JSON (Reverted to your original fetch code)
         // Note: Ensure games.json is accessible at this URL from the browser
-        fetch('../src/Data/games.json')
+        fetch('../Data/games.json')
             .then(response => response.json())
             .then(games => {
                 setAllGames(games);
