@@ -4,15 +4,19 @@ import styles from '../style/AuthPage.module.css';
 
 const LoginPage = () => {
     return (
-        /* Use the Container class for the fullscreen background */
         <div className={styles.loginContainer}>
 
-            {/* Use the wrapper class for the login card */}
+            {/* --- STANDARD NAV PLACEMENT (TOP LEFT) --- */}
+            <nav className={styles.navbar}>
+                <Link to="/" className={styles.homeLink}>
+                    <i className='bx bx-left-arrow-alt'></i> Home
+                </Link>
+            </nav>
+
             <div className={styles.wrapper}>
                 <form>
                     <h1>Login</h1>
 
-                    {/* Use bracket notation for classes with hyphens */}
                     <div className={styles['input-box']}>
                         <input type="email" placeholder="Email" required />
                         <i className="bx bxs-user"></i>
