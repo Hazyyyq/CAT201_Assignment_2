@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&display=swap');
 
 :root {
-
     --bg-color: #000;
     --accent-colour: #66fcf1;
     --dot-color: rgba(255, 255, 255, 0.3);
@@ -157,6 +156,10 @@
 }
 
 /* 3. The Red Number Badge */
+.fa-stack {
+    position: relative; /* Safety: ensures absolute badge is positioned relative to the icon */
+}
+
 .fa-stack[data-count]:after {
     position: absolute;
     top: -5px; /* Push it up slightly */
