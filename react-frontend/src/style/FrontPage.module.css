@@ -1,0 +1,233 @@
+/* =========================================
+   1. IMPORTS & VARIABLES
+   ========================================= */
+@import url('https://fonts.googleapis.com/css2?family=DotGothic16&family=Inter:wght@400;600&family=Roboto+Mono:wght@400;500&display=swap');
+
+/* =========================================
+   2. GLOBAL RESETS & DEFAULTS
+   ========================================= */
+html {
+    scroll-behavior: smooth; /* Enables smooth scrolling for anchor links */
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #000;
+    overflow-x: hidden; /* Prevents horizontal scrollbar */
+}
+
+/* =========================================
+   3. NAVIGATION STYLES
+   ========================================= */
+
+
+
+/* =========================================
+   5. HERO & BACKGROUND LOGIC
+   ========================================= */
+.hero-section {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    isolation: isolate; /* Creates new stacking context for children */
+    background-color: var(--section-bg);
+}
+
+.short-hero {
+    min-height: 45vh !important; /* Overrides default height for top/bottom sections */
+}
+
+/* Layer 1: Background Image */
+.hero-bg-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures image covers area without stretching */
+    object-position: center;
+    z-index: 1;
+    opacity: 1.0;
+    filter: brightness(1.0);
+    pointer-events: none; /* Allows clicks to pass through to elements below */
+}
+
+/* Layer 2: The Dot Grid Pattern */
+.hero-section::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+    /* Creates the dotted grid effect */
+    background-image: radial-gradient(circle, var(--dot-color) 1.5px, transparent 1.6px);
+    background-size: 40px 40px;
+    background-attachment: fixed; /* Parallax effect: dots stay still while scrolling */
+}
+
+/* The Huge Center Title */
+.hero-store-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Perfectly centers element */
+    z-index: 3;
+
+    font-family: 'DotGothic16', 'Cinzel Decorative', sans-serif, cursive;
+    font-size: 4rem;
+    font-weight: bold;
+    letter-spacing: 10px;
+    pointer-events: none;
+    text-align: center;
+
+    margin: 0;
+    line-height: 1.1;
+    text-transform: uppercase;
+
+    /* Hollow Text Effect */
+    color: transparent;
+    -webkit-text-stroke: 2px rgba(255, 255, 255, 0.3);
+    text-shadow: 0 0 30px rgba(215, 25, 32, 0.2);
+}
+
+.neon-text-title-front {
+    color: #66fcf1;
+    text-shadow: 0 0 20px rgba(102, 252, 241, 0.5);
+    font-family: 'DotGothic16', 'Cinzel Decorative', sans-serif, cursive;
+}
+
+/* =========================================
+   6. INFO CARDS & TYPOGRAPHY
+   ========================================= */
+/* Layer 3: The Content Card */
+.info-card {
+    position: relative;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(12px); /* Glassmorphism blur effect */
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+    padding: 40px 60px;
+    text-align: center;
+    color: #ffffff; /* Default text color for cards */
+
+    /* Animation initial state */
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease-out;
+}
+
+.info-card.active {
+    opacity: 1;
+    transform: translateY(0); /* Slide up animation */
+}
+
+.dark-theme {
+    --section-bg: #000000;
+    --text-color: #ffffff;
+}
+
+.card-label {
+    font-family: 'DotGothic16', sans-serif;
+    font-size: 1.2rem;
+    display: block;
+    margin-bottom: 8px;
+    opacity: 0.9;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.card-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+    letter-spacing: -1px;
+}
+
+
+.btn-shop {
+    display: inline-block;
+    padding: 14px 40px;
+    background: #fff;
+    color: #000;
+    font-family: 'Roboto Mono', monospace;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 700;
+    border-radius: 40px;
+    transition: all 0.3s ease;
+}
+
+.btn-shop:hover {
+    background: var(--accent-red);
+    color: white;
+    transform: translateY(-2px); /* Slight lift on hover */
+}
+
+/* =========================================
+   7. FOOTER SPECIFIC STYLES
+   ========================================= */
+.contact-info-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: #c5c6c7;
+}
+
+.contact-info-item i {
+    color: #66fcf1;
+    font-size: 1.1rem;
+    width: 20px;
+    text-align: center;
+}
+
+/* =========================================
+   8. RESPONSIVE MEDIA QUERIES
+   ========================================= */
+@media (max-width: 768px) {
+
+    /* Nav */
+    .nav-links.desktop-menu {
+        display: none;
+    }
+
+    /* Backgrounds */
+    .hero-section::before {
+        background-attachment: scroll; /* Fixes lag/glitches on mobile */
+    }
+
+    .hero-section {
+        min-height: 45vh;
+    }
+
+    .hero-bg-img {
+        object-position: center center;
+        object-fit: cover;
+        filter: brightness(0.6); /* Darker on mobile for readability */
+    }
+
+    /* Typography */
+    .hero-store-title {
+        font-size: 3rem;
+        -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
+    }
+
+    .card-title {
+        font-size: 2rem;
+    }
+
+    /* Cards */
+    .info-card {
+        padding: 30px 20px;
+        width: 90%;
+    }
+}

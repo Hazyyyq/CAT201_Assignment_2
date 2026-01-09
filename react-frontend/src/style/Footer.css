@@ -1,0 +1,109 @@
+/* =========================================
+   1. MAIN CONTAINER
+   ========================================= */
+.pixel-footer {
+    background: #000;
+    color: #fff;
+    padding: 80px 50px 20px;
+    border-top: 1px solid #333;
+    font-family: 'Inter', sans-serif;
+}
+
+/* =========================================
+   2. CONTENT LAYOUT (The Columns)
+   ========================================= */
+.footer-content {
+    display: flex; /* Makes columns sit side-by-side */
+    flex-wrap: wrap; /* Allows wrapping if screen is too small */
+    justify-content: space-around;
+    text-align: left;
+    gap: 40px; /* Space between columns */
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column; /* Stacks title, text, and links vertically */
+    gap: 20px;
+    min-width: 200px; /* Prevents columns from getting too thin */
+}
+
+/* =========================================
+   3. TYPOGRAPHY & HEADINGS
+   ========================================= */
+.footer-heading {
+    color: #66fcf1; /* Neon Teal */
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.footer-column p {
+    color: #c5c6c7; /* Light Grey */
+    line-height: 1.6;
+}
+
+/* =========================================
+   4. LINKS & CONTACT ICONS
+   ========================================= */
+.footer-links-list {
+    list-style: none; /* Removes bullet points */
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footer-links-list a {
+    color: #c5c6c7;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links-list a:hover {
+    color: #66fcf1;
+    text-shadow: 0 0 5px rgba(102, 252, 241, 0.6); /* Glowing effect */
+}
+
+.contact-info-item {
+    display: flex;
+    align-items: center; /* Aligns icon and text horizontally */
+    gap: 15px;
+    color: #c5c6c7;
+}
+
+.contact-info-item i {
+    color: #66fcf1;
+    font-size: 1.1rem;
+    width: 20px; /* Fixed width ensures text lines up perfectly */
+    text-align: center;
+}
+
+/* =========================================
+   5. BOTTOM COPYRIGHT BAR
+   ========================================= */
+.footer-bottom {
+    text-align: center;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid #222; /* Subtle separation line */
+    font-size: 0.8rem;
+    color: #666;
+    width: 100%;
+}
+
+/* =========================================
+   6. RESPONSIVE (MOBILE)
+   ========================================= */
+@media (max-width: 768px) {
+
+    .footer-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .pixel-footer {
+        padding: 60px 30px; /* Reduce padding on small screens */
+    }
+}
