@@ -24,11 +24,24 @@ public class ProductServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("application/json");
-        if (jsonFile.exists()) {
-            String content = Files.readString(jsonFile.toPath(), StandardCharsets.UTF_8);
-            resp.getWriter().write(content);
+        resp.setCharacterEncoding("UTF-8");
+
+        // 1. Read all products from the JSON file
+        List<Product> allProducts = readProducts();
+
+        // 2. Get the "category" parameter from the URL (e.g., /api/products?category=Games)
+        String categoryFilter = req.getParameter("category");
+
+        if (categoryFilter != null && !categoryFilter.isEmpty()) {
+            // 3. Filter the list to only include matching categories (case-insensitive)
+            List<Product> filteredProducts = allProducts.stream()
+                    .filter(p -> p.category != null && p.category.equalsIgnoreCase(categoryFilter))
+                    .collect(Collectors.toList());
+
+            resp.getWriter().write(gson.toJson(filteredProducts));
         } else {
-            resp.getWriter().write("[]");
+            // 4. If no category provided, return everything
+            resp.getWriter().write(gson.toJson(allProducts));
         }
     }
 
@@ -67,6 +80,8 @@ public class ProductServlet extends HttpServlet {
                 existing.category = updatedData.category;
                 existing.stock = updatedData.stock;
                 existing.price = updatedData.price;
+                existing.oldPrice = updatedData.oldPrice; // Update oldPrice
+                existing.badge = updatedData.badge;       // Update badge
                 existing.desc = updatedData.desc;
                 existing.image = updatedData.image;
 

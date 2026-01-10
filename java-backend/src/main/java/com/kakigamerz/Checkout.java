@@ -2,7 +2,7 @@ package com.kakigamerz;
 
 import java.util.List;
 
-public class OrderRequest {
+public class Checkout {
     public List<CartItem> items;
 
     public static class CartItem {

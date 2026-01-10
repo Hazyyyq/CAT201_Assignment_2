@@ -1,30 +1,29 @@
 package com.kakigamerz;
 
+import java.util.List;
+
 public class Product {
     public long id;
     public String name;
     public String category;
     public double price;
+    public Double oldPrice; // Use Double so it can be null
+    public String badge;    // To hold "-20%", "NEW", etc.
     public int stock;
     public String desc;
     public String image;
 
-    public Object specs;
-    public Object colors;
+    // Complex types for Phone/Watch/Tablet
+    public List<Spec> specs;
+    public List<Color> colors;
 
-    // Default constructor is enough for GSON
-    public Product() {
+    public static class Spec {
+        public String icon;
+        public String label;
     }
 
-    public Product(long id, String name, String category, double price, int stock, String desc, String image, Object specs, Object colors) {
-        this.id = id;
-        this.name = name;
-        this.category = category;
-        this.price = price;
-        this.stock = stock;
-        this.desc = desc;
-        this.image = image;
-        this.specs = specs;
-        this.colors = colors;
+    public static class Color {
+        public String name;
+        public String hex;
     }
 }

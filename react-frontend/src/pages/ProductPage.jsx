@@ -74,6 +74,15 @@ const ProductPage = () => {
 
     const addToCart = () => {
         if (!product || typeof product !== 'object') return;
+
+        const cart = JSON.parse(localStorage.getItem('kakiCart')) || [];
+
+        const currentInCart = cart.filter(item => item.id === product.id).length;
+
+        if (currentInCart >= product.stock) {
+            alert(`Sorry, you cannot add more. We only have ${product.stock} units of ${product.name} in stock.`);
+            return; // STOP execution here
+        }
         const newItem = {
             cartId: Date.now(), // Unique for the cart list
             id: product.id,     // THE REAL ID from products.json (e.g., 25)
@@ -83,7 +92,6 @@ const ProductPage = () => {
             color: color,
             size: size + "GB"
         };
-        const cart = JSON.parse(localStorage.getItem('kakiCart')) || [];
         cart.push(newItem);
         localStorage.setItem('kakiCart', JSON.stringify(cart));
         setCartCount(cart.length);
@@ -122,12 +130,20 @@ const ProductPage = () => {
 
             <div className={styles.container}>
                 <div className={styles.imageSection}>
+                    {product.badge && (
+                        <span className={`${styles.productBadge} ${(!product.badge.includes('%')) ? styles.statusBadge : ''}`}>
+                {product.badge}
+            </span>
+                    )}
                     <img src={product.image || product.img} alt={product.name} className={styles.img} />
                 </div>
 
                 <div className={styles.detailsSection}>
                     <span className={`${styles.brandTag} ${styles.stagger1}`}>KAKI GAMERZ OFFICIAL</span>
                     <h1 className={`${styles.productTitle} ${styles.stagger2}`}>{product.name}</h1>
+                    {product.oldPrice && (
+                        <span className={styles.oldPriceText}>RM {product.oldPrice}</span>
+                    )}
                     <div className={`${styles.priceTag} ${styles.stagger3}`}>RM {finalPrice}</div>
 
                     {/* --- SPECS GRID --- */}

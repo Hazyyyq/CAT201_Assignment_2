@@ -21,14 +21,14 @@ public class CheckoutServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // 1. Parse the incoming cart items from React
-        OrderRequest order = gson.fromJson(req.getReader(), OrderRequest.class);
+        Checkout order = gson.fromJson(req.getReader(), Checkout.class);
 
         // 2. Load the current products database
         String content = Files.readString(jsonFile.toPath(), StandardCharsets.UTF_8);
         List<Product> databaseProducts = gson.fromJson(content, new TypeToken<ArrayList<Product>>(){}.getType());
 
         // 3. Logic: For every item in the cart, find it in the database and reduce stock
-        for (OrderRequest.CartItem cartItem : order.items) {
+        for (Checkout.CartItem cartItem : order.items) {
             for (Product dbProduct : databaseProducts) {
                 // IMPORTANT: We use originalId if your cart uses Date.now(),
                 // but usually we pass the product's actual database ID.
