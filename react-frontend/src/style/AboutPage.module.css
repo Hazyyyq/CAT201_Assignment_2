@@ -1,22 +1,36 @@
 /* src/style/AboutPage.module.css */
 
 /* =========================================
-   3. LAYOUT & BACKGROUND
+   1. PAGE WRAPPER (Handles Full-Screen Background)
+   ========================================= */
+.pageWrapper {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #000;
+    position: relative;
+    overflow-x: hidden;
+
+    /* The Dot Pattern - Applied to the full page */
+    /* Uses the global variable --dot-color or hardcoded neon cyan */
+    background-image: radial-gradient(circle, rgba(102, 252, 241, 0.2) 1.5px, transparent 1.6px);
+    background-size: 40px 40px;
+    background-attachment: fixed; /* Keeps dots static while scrolling */
+}
+
+/* =========================================
+   2. CONTENT CONTAINER (Handles Centering)
    ========================================= */
 .container {
     max-width: 1100px;
     margin: 0 auto;
     padding: 100px 20px 40px;
     position: relative;
-    z-index: 1;
-
-    /* Scoped Background Dots for About Page */
-    /* Uses the global variable --dot-color from index.css */
-    background-image: radial-gradient(circle, var(--dot-color) 1.5px, transparent 1.6px);
-    background-size: 40px 40px;
-    background-attachment: fixed;
+    z-index: 2; /* Ensures content sits above background */
 }
 
+/* =========================================
+   3. LAYOUT & GRIDS
+   ========================================= */
 .All-Grid {
     display: flex;
     flex-wrap: wrap;
@@ -183,7 +197,6 @@
     transition: transform 0.2s, opacity 0.2s;
 }
 
-
 .ManagerSocMed a:hover {
     transform: translateY(-3px) scale(1.2);
     color: #66fcf1;
@@ -254,7 +267,7 @@
     padding-bottom: 5px;
     margin-bottom: 15px;
     text-transform: uppercase;
-    font-size: 1.5em; /* Added explicit size */
+    font-size: 1.5em;
 }
 
 /* =========================================
@@ -264,26 +277,19 @@
     .big-brand-title {
         font-size: 3rem;
     }
-
     .brand-tagline {
         font-size: 0.9rem;
         letter-spacing: 3px;
     }
-
-    /* Hide desktop nav */
     .desktop-menu {
         display: none;
     }
-
-    /* Show sidebar icon */
     .sidebar {
         display: block;
     }
-
     .back-video {
         object-fit: cover;
     }
-
     .video-section {
         min-height: 30vh;
     }

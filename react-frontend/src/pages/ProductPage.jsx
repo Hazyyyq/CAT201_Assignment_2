@@ -5,9 +5,11 @@ import styles from '../style/ProductPage.module.css';
 const ProductPage = () => {
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
-    const type = queryParams.get('type') || 'phone';
 
-    // --- 1. FIX: Initialize as null, not a string ---
+    // GET BOTH PARAMETERS
+    const idParam = queryParams.get('id');
+    const typeParam = queryParams.get('type') || 'phone'; // Default fallback
+
     const [product, setProduct] = useState(null);
     const [loading, setLoading] = useState(true);
     const [cartCount, setCartCount] = useState(0);
@@ -17,7 +19,7 @@ const ProductPage = () => {
     const [finalPrice, setFinalPrice] = useState(0);
     const [isOpen, setIsOpen] = useState(false);
 
-    // --- 2. FETCH DATA ---
+    // --- UPDATED FETCH LOGIC ---
     useEffect(() => {
         const fetchData = async () => {
             setLoading(true);
@@ -25,9 +27,24 @@ const ProductPage = () => {
                 const response = await fetch('http://localhost:8080/api/products');
                 const data = await response.json();
 
-                const foundProduct = data.find(item =>
-                    item.category && item.category.toLowerCase() === type.toLowerCase()
-                );
+                let foundProduct = null;
+
+                // 1. Try finding by ID first (for Fresh Drops)
+                if (idParam) {
+                    foundProduct = data.find(item => item.id.toString() === idParam.toString());
+                }
+
+                // 2. If no ID found, try finding by Category (for Nav Links)
+                if (!foundProduct && typeParam) {
+                    foundProduct = data.find(item =>
+                        item.category && item.category.toLowerCase() === typeParam.toLowerCase()
+                    );
+                }
+
+                // 3. Last Resort: Default to first Phone
+                if (!foundProduct) {
+                    foundProduct = data.find(item => item.category === 'Phone');
+                }
 
                 if (foundProduct) {
                     setProduct(foundProduct);
@@ -44,7 +61,7 @@ const ProductPage = () => {
             }
         };
         fetchData();
-    }, [type]);
+    }, [idParam, typeParam]); // Run when URL changes
 
     // Mouse Tracking
     useEffect(() => {
@@ -64,7 +81,7 @@ const ProductPage = () => {
     }, []);
 
     useEffect(() => {
-        if (product && typeof product === 'object') { // FIX: Ensure product is the object
+        if (product && typeof product === 'object') {
             let extraCost = 0;
             if (size === "256") extraCost = 500;
             if (size === "512") extraCost = 1000;
@@ -81,11 +98,11 @@ const ProductPage = () => {
 
         if (currentInCart >= product.stock) {
             alert(`Sorry, you cannot add more. We only have ${product.stock} units of ${product.name} in stock.`);
-            return; // STOP execution here
+            return;
         }
         const newItem = {
-            cartId: Date.now(), // Unique for the cart list
-            id: product.id,     // THE REAL ID from products.json (e.g., 25)
+            cartId: Date.now(),
+            id: product.id,
             name: product.name,
             price: finalPrice,
             img: product.image || product.img,
@@ -99,7 +116,7 @@ const ProductPage = () => {
     };
 
     if (loading) return <div style={{height: '100vh', color: 'white', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>Loading...</div>;
-    // --- 3. FIX: Check if product is still the initial string or null ---
+
     if (!product || typeof product !== 'object') return <div style={{height: '100vh', color: 'white', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>Product Not Found</div>;
 
     return (
