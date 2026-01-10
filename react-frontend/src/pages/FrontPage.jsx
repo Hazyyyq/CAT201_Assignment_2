@@ -6,29 +6,42 @@ import Footer from "../components/Footer.jsx";
 function FrontPage() {
     const [user, setUser] = useState(null);
     const [isOpen, setIsOpen] = useState(false);
-
-    // --- 1. ADD CART COUNT STATE ---
     const [cartCount, setCartCount] = useState(0);
+
+    // --- STATE FOR DYNAMIC PRODUCTS ---
+    const [newArrivals, setNewArrivals] = useState([]);
 
     const location = useLocation();
 
+    // 1. Load User
     useEffect(() => {
-        // Read user from local storage
         const storedUser = localStorage.getItem('currentUser');
         if (storedUser) {
             setUser(JSON.parse(storedUser));
         }
     }, []);
 
-    // --- 2. LOAD CART COUNT ON MOUNT ---
+    // 2. Load Cart Count
     useEffect(() => {
-        // Read the cart from local storage
         const storedCart = JSON.parse(localStorage.getItem('kakiCart')) || [];
-        // Update the badge number
         setCartCount(storedCart.length);
     }, []);
 
-    // Scroll Reveal Logic
+    // 3. FETCH LATEST PRODUCTS (FRESH DROPS)
+    useEffect(() => {
+        fetch('http://localhost:8080/api/products')
+            .then(res => res.json())
+            .then(data => {
+                const latest = data
+                    .filter(p => p.category !== 'Games')
+                    .reverse()
+                    .slice(0, 3);
+                setNewArrivals(latest);
+            })
+            .catch(err => console.error("Error loading new arrivals:", err));
+    }, []);
+
+    // 4. Scroll Reveal Logic
     useEffect(() => {
         if (location.hash) {
             const element = document.querySelector(location.hash);
@@ -37,22 +50,29 @@ function FrontPage() {
 
         const reveal = () => {
             let reveals = document.getElementsByClassName(styles['info-card']);
-            for (let i = 0; i < reveals.length; i++) {
-                let windowheight = window.innerHeight;
-                let revealtop = reveals[i].getBoundingClientRect().top;
-                let revealpoint = 150;
+            let dynamicCards = document.getElementsByClassName('dynamic-reveal');
 
-                if (revealtop < windowheight - revealpoint) {
-                    reveals[i].classList.add(styles.active);
+            const checkReveal = (elements) => {
+                for (let i = 0; i < elements.length; i++) {
+                    let windowheight = window.innerHeight;
+                    let revealtop = elements[i].getBoundingClientRect().top;
+                    let revealpoint = 150;
+
+                    if (revealtop < windowheight - revealpoint) {
+                        elements[i].classList.add(styles.active);
+                    }
                 }
-            }
+            };
+
+            checkReveal(reveals);
+            checkReveal(dynamicCards);
         };
 
         window.addEventListener('scroll', reveal);
         reveal();
 
         return () => window.removeEventListener('scroll', reveal);
-    }, [location]);
+    }, [location, newArrivals]);
 
     const scrollToSection = (e, id) => {
         e.preventDefault();
@@ -70,22 +90,29 @@ function FrontPage() {
                 KAKI GAMERZ<span className="dot"></span>
             </Link>
 
+            {/* DESKTOP MENU (Hidden on Mobile) */}
             <div className="nav-links desktop-menu">
                 <Link to="/#phone" onClick={(e) => scrollToSection(e, 'phone')}>KakiPhone</Link>
                 <Link to="/#watch" onClick={(e) => scrollToSection(e, 'watch')}>KakiWatch</Link>
                 <Link to="/#tablet" onClick={(e) => scrollToSection(e, 'tablet')}>KakiPad</Link>
+
+                {newArrivals.length > 0 && (
+                    <Link to="/#fresh-drops" onClick={(e) => scrollToSection(e, 'fresh-drops')}>
+                        Fresh Drops
+                    </Link>
+                )}
+
                 <Link to="/#games" onClick={(e) => scrollToSection(e, 'games')}>Games</Link>
                 <Link to="/#about" onClick={(e) => scrollToSection(e, 'about')}>About Us</Link>
             </div>
 
+            {/* DESKTOP ACTIONS (Cart/Login - Hidden on Mobile via CSS) */}
             <div className="nav-actions">
-                {/* --- 3. UPDATED CART ICON LOGIC --- */}
-                {/* Note: Changed to standard string class "cart-icon-container" to match your global CSS file */}
                 <Link to="/cart" className="cart-icon-container">
                     <span
                         id="cart-badge"
                         className="fa-stack fa-lg has-badge"
-                        data-count={cartCount} // This injects the number into the CSS
+                        data-count={cartCount}
                     >
                       <i className="fa fa-circle fa-stack-2x"></i>
                       <i className="fa fa-shopping-cart fa-stack-1x fa-inverse"></i>
@@ -93,21 +120,17 @@ function FrontPage() {
                 </Link>
 
                 <div className="nav-button">
-
-                    {/* SHOW ADMIN BUTTON ONLY IF USER IS ADMIN */}
                     {user && user.role === 'admin' && (
                         <Link to="/admin" className="nav-pill-btn">
                             Admin Panel
                         </Link>
                     )}
-
-                    {/* SHOW LOGOUT IF LOGGED IN, ELSE SHOW LOGIN */}
                     {user ? (
                         <button
                             className="nav-pill-btn"
                             onClick={() => {
                                 localStorage.removeItem('currentUser');
-                                window.location.reload(); // Refresh to update UI
+                                window.location.reload();
                             }}
                         >
                             Logout
@@ -115,23 +138,91 @@ function FrontPage() {
                     ) : (
                         <Link to="/login" className="nav-pill-btn">Login</Link>
                     )}
-
                 </div>
             </div>
 
+            {/* HAMBURGER ICON (Visible only on Mobile) */}
             <div className="sidebar" onClick={() => setIsOpen(!isOpen)}>
                 <i className={`fa ${isOpen ? "fa-times" : "fa-bars"}`}></i>
             </div>
         </nav>
 
+        {/* --- MOBILE SIDEBAR OVERLAY --- */}
         <div className={`mobile-nav-overlay ${isOpen ? 'active' : ''}`}>
-            <Link to="/#phone" onClick={(e) => scrollToSection(e, 'phone')}>KakiPhone</Link>
-            <Link to="/#watch" onClick={(e) => scrollToSection(e, 'watch')}>KakiWatch</Link>
-            <Link to="/#tablet" onClick={(e) => scrollToSection(e, 'tablet')}>KakiPad</Link>
-            <Link to="/#games" onClick={(e) => scrollToSection(e, 'games')}>Games</Link>
-            <Link to="/#about" onClick={(e) => scrollToSection(e, 'about')}>About Us</Link>
+
+            {/* 1. Main Navigation */}
+            <Link to="/#phone" onClick={(e) => { setIsOpen(false); scrollToSection(e, 'phone'); }}>KakiPhone</Link>
+            <Link to="/#watch" onClick={(e) => { setIsOpen(false); scrollToSection(e, 'watch'); }}>KakiWatch</Link>
+            <Link to="/#tablet" onClick={(e) => { setIsOpen(false); scrollToSection(e, 'tablet'); }}>KakiPad</Link>
+
+            {newArrivals.length > 0 && (
+                <Link to="/#fresh-drops" onClick={(e) => { setIsOpen(false); scrollToSection(e, 'fresh-drops'); }}>
+                    Fresh Drops
+                </Link>
+            )}
+
+            <Link to="/#games" onClick={(e) => { setIsOpen(false); scrollToSection(e, 'games'); }}>Games</Link>
+            <Link to="/#about" onClick={(e) => { setIsOpen(false); scrollToSection(e, 'about'); }}>About Us</Link>
+
+            {/* 2. Divider Line (If you don't see this, the code isn't updating!) */}
+            <div style={{ width: '60%', height: '1px', background: 'rgba(255,255,255,0.2)', margin: '10px 0' }}></div>
+
+            {/* 3. USER ACTIONS (Mobile) */}
+
+            {/* Mobile Cart */}
+            <Link to="/cart" onClick={() => setIsOpen(false)} style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none', color: '#fff', fontSize: '1.2rem', fontFamily: 'DotGothic16, sans-serif' }}>
+                CART <span style={{ background: '#ff4747', padding: '2px 8px', borderRadius: '10px', fontSize: '0.9rem', color: 'white', fontWeight:'bold', fontFamily: 'sans-serif' }}>{cartCount}</span>
+            </Link>
+
+            {/* Mobile Admin Panel */}
+            {user && user.role === 'admin' && (
+                <Link to="/admin" onClick={() => setIsOpen(false)} style={{ color: '#0071e3', fontWeight: 'bold', fontSize: '1.2rem', fontFamily: 'DotGothic16, sans-serif', marginTop: '10px', textDecoration: 'none' }}>
+                    ADMIN PANEL
+                </Link>
+            )}
+
+            {/* Mobile Login/Logout (STYLED BUTTONS) */}
+            {user ? (
+                <button
+                    onClick={() => {
+                        localStorage.removeItem('currentUser');
+                        window.location.reload();
+                    }}
+                    style={{
+                        background: 'transparent',
+                        border: '1px solid #ff4747',
+                        color: '#ff4747',
+                        padding: '10px 40px',
+                        borderRadius: '30px',
+                        fontSize: '1.2rem',
+                        fontFamily: 'DotGothic16, sans-serif',
+                        marginTop: '15px',
+                        cursor: 'pointer'
+                    }}
+                >
+                    LOGOUT
+                </button>
+            ) : (
+                <Link to="/login" onClick={() => setIsOpen(false)}
+                      style={{
+                          background: 'transparent',
+                          border: '1px solid #66fcf1',
+                          color: '#66fcf1',
+                          padding: '10px 40px',
+                          borderRadius: '30px',
+                          fontSize: '1.2rem',
+                          fontFamily: 'DotGothic16, sans-serif',
+                          marginTop: '15px',
+                          textDecoration: 'none',
+                          display: 'inline-block'
+                      }}
+                >
+                    LOGIN
+                </Link>
+            )}
         </div>
 
+        {/* --- REST OF THE PAGE CONTENT --- */}
         <section id="home" className={`${styles['hero-section']} ${styles['dark-theme']} ${styles['short-hero']}`}>
             <img
                 src="https://i.pinimg.com/originals/cd/f4/95/cdf4951a69fe542e2b7d6a07aa234a1b.gif"
@@ -205,6 +296,90 @@ function FrontPage() {
                 <Link to="/products?type=tablet" className={styles['btn-shop']}>View</Link>
             </div>
         </section>
+
+        {newArrivals.length > 0 && (
+            <section
+                id="fresh-drops"
+                className={`${styles['hero-section']} ${styles['dark-theme']}`}
+                style={{
+                    flexDirection: 'column',
+                    padding: '80px 20px',
+                    minHeight: 'auto',
+                    background: 'radial-gradient(circle, #1a1a1a 0%, #000000 100%)'
+                }}
+            >
+                <div style={{
+                    zIndex: 10,
+                    marginBottom: '40px',
+                    textAlign: 'center',
+                    borderBottom: '2px solid #66fcf1',
+                    paddingBottom: '10px'
+                }}>
+                    <h2 style={{
+                        color: '#fff',
+                        fontSize: '2.5rem',
+                        fontFamily: 'DotGothic16, sans-serif',
+                        margin: 0,
+                        textTransform: 'uppercase'
+                    }}>
+                        Fresh <span style={{ color: '#66fcf1', textShadow: '0 0 10px rgba(102, 252, 241, 0.5)' }}>Drops</span>
+                    </h2>
+                </div>
+
+                <div style={{
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                    gap: '30px',
+                    justifyContent: 'center',
+                    zIndex: 10,
+                    width: '100%',
+                    maxWidth: '1200px'
+                }}>
+                    {newArrivals.map((product) => (
+                        <div
+                            key={product.id}
+                            className={`${styles['info-card']} dynamic-reveal`}
+                            style={{
+                                flex: '1 1 300px',
+                                maxWidth: '350px',
+                                padding: '30px',
+                                minHeight: '400px',
+                                display: 'flex',
+                                flexDirection: 'column',
+                                justifyContent: 'space-between',
+                                background: 'rgba(20, 20, 20, 0.8)'
+                            }}
+                        >
+                            <div>
+                                <span className={styles['card-label']} style={{color:'#66fcf1'}}>NEW ARRIVAL</span>
+                                <h3 className={styles['card-title']} style={{fontSize: '1.8rem', marginBottom:'10px'}}>{product.name}</h3>
+                                <div style={{width: '100%', height: '180px', overflow:'hidden', borderRadius:'10px', marginBottom:'20px'}}>
+                                    <img
+                                        src={product.image || 'https://via.placeholder.com/300'}
+                                        alt={product.name}
+                                        style={{width: '100%', height: '100%', objectFit: 'cover'}}
+                                    />
+                                </div>
+                                <p style={{color: '#ccc', fontSize: '0.9rem', marginBottom: '20px'}}>
+                                    {product.desc ? product.desc.substring(0, 60) + '...' : 'Latest tech gear from Kaki Gamerz.'}
+                                </p>
+                            </div>
+
+                            <div style={{display:'flex', alignItems:'center', justifyContent:'space-between'}}>
+                                <span style={{color: '#fff', fontSize: '1.2rem', fontWeight:'bold'}}>RM {product.price}</span>
+                                <Link
+                                    to={`/products?id=${product.id}`}
+                                    className={styles['btn-shop']}
+                                    style={{padding: '10px 20px', fontSize:'0.9rem'}}
+                                >
+                                    View
+                                </Link>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </section>
+        )}
 
         <section id="games" className={`${styles['hero-section']} ${styles['dark-theme']}`}>
             <img

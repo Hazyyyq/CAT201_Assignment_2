@@ -5,28 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a0e7f99b-0edd-44c9-9cee-aee7cf954985" name="Changes" comment="Add docker file">
-      <change beforePath="$PROJECT_DIR$/public/CSS/aboutPage.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/CSS/adminPageDesign.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/CSS/auth.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/CSS/frontPage.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/CSS/gamesPage.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/CSS/productPage.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Data/games.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/HTML/aboutPage.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/HTML/adminPageDesign.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/HTML/cartPage.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/HTML/frontPage.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/HTML/gamesPage.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/HTML/login.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/HTML/productPage.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/HTML/signUp.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/JavaScript/adminPageDesign.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/JavaScript/frontPage.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/JavaScript/script.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/kakiGamerz.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/test.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/vid/GravitiGamerz.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/vid/GravitiGamerz_2.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java-backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/java-backend/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -197,23 +177,7 @@
       <option name="project" value="LOCAL" />
       <updated>1768059327718</updated>
     </task>
-    <task id="LOCAL-00005" summary="Add docker file">
-      <option name="closed" value="true" />
-      <created>1768059854467</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1768059854467</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Add docker file">
-      <option name="closed" value="true" />
-      <created>1768060203600</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1768060203600</updated>
-    </task>
-    <option name="localTasksCounter" value="7" />
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

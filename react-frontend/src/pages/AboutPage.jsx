@@ -1,38 +1,34 @@
 import {useState} from 'react';
 import {Link} from 'react-router-dom';
-import styles from '../style/AboutPage.module.css'; // Keeps layout styles modular
+import styles from '../style/AboutPage.module.css';
 import Footer from '../components/Footer.jsx';
 
 function AboutPage() {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <>
-            {/* 1. NAV IS NOW GLOBAL */}
+        // WRAP EVERYTHING IN THE NEW PAGE WRAPPER TO GET FULL BACKGROUND
+        <div className={styles.pageWrapper}>
+
             <nav className="nav">
-                {/* Logo & Dot are Global */}
                 <Link to="/" className="logo">
                     KAKI GAMERZ<span className="dot"></span>
                 </Link>
 
-                {/* Nav Links & Desktop Menu are Global */}
                 <div className="nav-links desktop-menu">
                     <Link to="/">Home</Link>
                 </div>
 
-                {/* Sidebar is Global */}
                 <div className="sidebar" onClick={() => setIsOpen(!isOpen)}>
                     <i className={`fa ${isOpen ? "fa-times" : "fa-bars"}`}></i>
                 </div>
             </nav>
 
-            {/* 2. MOBILE OVERLAY IS GLOBAL */}
-            {/* Note: using 'active' string because it's defined in your global CSS */}
             <div className={`mobile-nav-overlay ${isOpen ? 'active' : ''}`}>
                 <Link to="/" onClick={() => setIsOpen(false)}>Home</Link>
             </div>
 
-            {/* 3. MAIN CONTENT REMAINS MODULAR (Layout specific to About Page) */}
+            {/* MAIN CONTENT STAYS CENTERED */}
             <main className={styles.container}>
                 <div className={styles['brand-header']}>
                     <h1 className={styles['big-brand-title']}>
@@ -67,7 +63,6 @@ function AboutPage() {
                         <img src="/img/Airil.jpeg" alt="Airil Aiman bin Azman"/>
                         <div className={styles.info}>
                             <h5>Airil Aiman bin Azman</h5>
-                            {/* Inline style kept as requested, could use var(--accent-colour) later */}
                             <p style={{color: '#66fcf1', fontWeight: 'bold'}}>System Architect</p>
                             <p className={styles['job-desc']}>
                                 Constructed the world logic. Ensures the database is robust enough to handle the
@@ -75,7 +70,6 @@ function AboutPage() {
                             </p>
                         </div>
                         <ul className={styles.ManagerSocMed}>
-                            {/* FontAwesome classes are Global strings */}
                             <li><a href="#"><i className="fa fa-facebook"></i></a></li>
                             <li><a href="#"><i className="fa fa-instagram"></i></a></li>
                             <li><a href="#"><i className="fa fa-linkedin-square"></i></a></li>
@@ -168,7 +162,7 @@ function AboutPage() {
             </main>
 
             <Footer/>
-        </>
+        </div>
     )
 }
 
