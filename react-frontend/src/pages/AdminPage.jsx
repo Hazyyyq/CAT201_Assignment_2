@@ -1,64 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom'; // <--- FIXED: Added missing import
+import { Link } from 'react-router-dom';
 import styles from '../style/AdminPage.module.css';
 
 const AdminPage = () => {
-    // --- 1. INITIAL SETUP & STATE ---
-    const defaultProducts = [
-        {
-            id: 1,
-            name: "KakiPhone 15 Pro",
-            category: "Phone",
-            price: 4999,
-            stock: 12,
-            desc: "Titanium. So Strong. So light. So pro.",
-            image: "https://images.unsplash.com/photo-1732020883989-b22d66f8f1b9?w=600&auto=format&fit=crop"
-        },
-        {
-            id: 2,
-            name: "KakiWatch Ultra",
-            category: "Watch",
-            price: 3299,
-            stock: 3,
-            desc: "Adventure awaits. The ultimate sports watch.",
-            image: "https://images.unsplash.com/photo-1594619272803-932ee1b5a0d9?w=600&auto=format&fit=crop"
-        },
-        {
-            id: 3,
-            name: "KakiPad Air",
-            category: "Tablet",
-            price: 2500,
-            stock: 20,
-            desc: "Two sizes. Faster chip. Does it all.",
-            image: "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?q=80&w=2015&auto=format&fit=crop"
-        },
-        {
-            id: 4,
-            name: "Elden Ring",
-            category: "Games",
-            price: 199,
-            stock: 50,
-            desc: "Game of the Year edition. PS5/PC.",
-            image: "https://images.unsplash.com/photo-1552820728-8b83bb6b773f?q=80&w=2070&auto=format&fit=crop"
-        }
-    ];
 
-    const [products, setProducts] = useState(() => {
-        const saved = localStorage.getItem('kakiProducts');
-        return saved ? JSON.parse(saved) : defaultProducts;
-    });
-
+    // --- 1. STATE ---
+    const [products, setProducts] = useState([]); // Start empty, fetch later
     const [currentCategory, setCurrentCategory] = useState('all');
     const [isModalOpen, setIsModalOpen] = useState(false);
-
-    const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(false); // Sidebar toggle
 
     // Form States
     const [isEditing, setIsEditing] = useState(false);
     const [editId, setEditId] = useState(null);
     const [formData, setFormData] = useState({
         name: '',
-        category: 'Phone',
+        category: '',
         stock: '',
         price: '',
         desc: '',
@@ -67,22 +24,84 @@ const AdminPage = () => {
     const [fileName, setFileName] = useState("No file chosen");
     const [previewImage, setPreviewImage] = useState("");
 
-    // --- 2. EFFECTS ---
+    // --- 2. INITIAL LOAD ---
     useEffect(() => {
-        localStorage.setItem('kakiProducts', JSON.stringify(products));
-    }, [products]);
+        fetchProducts();
+    }, []);
+
+    const fetchProducts = async () => {
+        try {
+            // Using 127.0.0.1 to avoid localhost issues
+            const res = await fetch('http://127.0.0.1:8080/api/products');
+            const data = await res.json();
+            setProducts(data);
+        } catch (error) {
+            console.error("Error fetching products:", error);
+        }
+    };
 
     // --- 3. HANDLERS ---
     const filteredProducts = currentCategory === 'all'
         ? products
         : products.filter(p => p.category === currentCategory);
 
-    const handleDelete = (id) => {
+    const handleDelete = async (id) => {
         if (window.confirm("Are you sure you want to delete this product?")) {
-            setProducts(products.filter(p => p.id !== id));
+            try {
+                await fetch(`http://127.0.0.1:8080/api/games?id=${id}`, {
+                    method: 'DELETE'
+                });
+                // Refresh list from server immediately
+                fetchProducts();
+            } catch (error) {
+                console.error("Delete failed:", error);
+            }
         }
     };
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const finalImage = previewImage !== "" ? previewImage : formData.image;
+
+        // Prepare data object
+        const productData = {
+            id: isEditing ? editId : 0, // 0 tells Java to generate a new ID
+            name: formData.name,
+            image: finalImage,
+            category: formData.category,
+            stock: parseInt(formData.stock),
+            price: parseFloat(formData.price),
+            desc: formData.desc
+        };
+
+        try {
+            if (isEditing) {
+                // EDIT Mode (PUT)
+                await fetch('http://127.0.0.1:8080/api/games', {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(productData)
+                });
+            } else {
+                // ADD Mode (POST)
+                await fetch('http://127.0.0.1:8080/api/games', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(productData)
+                });
+            }
+
+            // Refresh list and close modal
+            fetchProducts();
+            closeModal();
+
+        } catch (error) {
+            console.error("Save failed:", error);
+            alert("Failed to save product. Check console.");
+        }
+    };
+
+    // --- MODAL HELPERS ---
     const openModal = (mode, product = null) => {
         setIsModalOpen(true);
         if (mode === 'edit' && product) {
@@ -135,51 +154,25 @@ const AdminPage = () => {
         setFormData(prev => ({ ...prev, [keyMap[id]]: value }));
     };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        const finalImage = previewImage !== "" ? previewImage : formData.image;
-
-        const productData = {
-            id: isEditing ? editId : Date.now(),
-            name: formData.name,
-            image: finalImage,
-            category: formData.category,
-            stock: formData.stock,
-            price: formData.price,
-            desc: formData.desc
-        };
-
-        if (isEditing) {
-            setProducts(products.map(p => p.id === editId ? productData : p));
-        } else {
-            setProducts([...products, productData]);
-        }
-        closeModal();
-    };
-
+    // --- RENDER ---
     return (
         <div className="dark-theme">
             {/* Global Nav */}
             <nav className="nav">
-                {/* 1. LEFT: LOGO */}
-                {/* Ensure you have React Router installed, or switch this back to <a href="/"> */}
                 <Link to="/" className="logo">
                     KAKI GAMERZ-ADMIN<span className="dot"></span>
                 </Link>
 
-                {/* 2. CENTER: NAV LINKS */}
                 <div className="nav-links desktop-menu">
                     <Link to ="/">Store Front</Link>
                     <a href="#" className="active">Inventory</a>
                     <a href="#">Orders</a>
                 </div>
 
-                {/* 3. RIGHT: GROUPED ACTIONS */}
                 <div className="nav-actions">
                     <div className={styles['admin-badge']}>Admin Mode</div>
                 </div>
 
-                {/* SIDEBAR TRIGGER */}
                 <div className="sidebar" onClick={() => setIsOpen(!isOpen)}>
                     <i className={`fa ${isOpen ? "fa-times" : "fa-bars"}`}></i>
                 </div>

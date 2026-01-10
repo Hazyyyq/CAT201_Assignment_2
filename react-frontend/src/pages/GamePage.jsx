@@ -21,8 +21,13 @@ const GamesPage = () => {
 
         // Fetch JSON (Reverted to your original fetch code)
         // Note: Ensure games.json is accessible at this URL from the browser
-        fetch('../Data/games.json')
-            .then(response => response.json())
+        fetch('http://localhost:8080/api/products')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
             .then(games => {
                 setAllGames(games);
                 setLoading(false);

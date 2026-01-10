@@ -5,49 +5,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a0e7f99b-0edd-44c9-9cee-aee7cf954985" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/react-frontend/.gitattributes" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/react-frontend/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/react-frontend/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/react-frontend/eslint.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/react-frontend/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/react-frontend/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/react-frontend/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/react-frontend/public/img/Aiman.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/react-frontend/public/img/Airil.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/react-frontend/public/img/Haziq.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/react-frontend/public/img/Johan.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/react-frontend/public/img/test.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/react-frontend/public/vid/GravitiGamerz.mp4" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/react-frontend/public/vid/GravitiGamerz_2.mp4" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/react-frontend/public/vid/intro.mp4" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/react-frontend/src/App.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/react-frontend/src/Data/games.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/react-frontend/src/PinPagePosition.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/react-frontend/src/assets/react.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/react-frontend/src/components/Footer.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/react-frontend/src/main.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/react-frontend/src/pages/AboutPage.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/react-frontend/src/pages/AdminPage.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/react-frontend/src/pages/CartPage.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/react-frontend/src/pages/FrontPage.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/react-frontend/src/pages/GamePage.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/react-frontend/src/pages/LoginPage.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/react-frontend/src/pages/ProductPage.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/react-frontend/src/pages/SignUpPage.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/react-frontend/src/style/AboutPage.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/react-frontend/src/style/AdminPage.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/react-frontend/src/style/AuthPage.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/react-frontend/src/style/CartPage.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/react-frontend/src/style/Footer.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/react-frontend/src/style/FrontPage.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/react-frontend/src/style/GamePage.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/react-frontend/src/style/ProductPage.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/react-frontend/src/style/index.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/react-frontend/vite.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/java-backend/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/java-backend/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/java-backend/src/Data/products.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/java-backend/src/Data/users.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/java-backend/src/main/java/com/kakigamerz/CheckoutServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/java-backend/src/main/java/com/kakigamerz/CorsFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/java-backend/src/main/java/com/kakigamerz/Game.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/java-backend/src/main/java/com/kakigamerz/GameServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/java-backend/src/main/java/com/kakigamerz/LoginServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/java-backend/src/main/java/com/kakigamerz/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/java-backend/src/main/java/com/kakigamerz/OrderRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/java-backend/src/main/java/com/kakigamerz/Product.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/java-backend/src/main/java/com/kakigamerz/ProductServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/java-backend/src/main/java/com/kakigamerz/SignUpServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/java-backend/src/main/java/com/kakigamerz/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/CSS/aboutPage.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/CSS/aboutPage.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/HTML/adminPageDesign.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/HTML/adminPageDesign.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/HTML/cartPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/HTML/cartPage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-frontend/src/pages/AdminPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/react-frontend/src/pages/AdminPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-frontend/src/pages/CartPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/react-frontend/src/pages/CartPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-frontend/src/pages/FrontPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/react-frontend/src/pages/FrontPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-frontend/src/pages/GamePage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/react-frontend/src/pages/GamePage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-frontend/src/pages/LoginPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/react-frontend/src/pages/LoginPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-frontend/src/pages/ProductPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/react-frontend/src/pages/ProductPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-frontend/src/pages/SignUpPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/react-frontend/src/pages/SignUpPage.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,6 +41,8 @@
         <option value="JavaScript File" />
         <option value="HTML File" />
         <option value="CSS File" />
+        <option value="package.json" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -106,6 +89,8 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.Main.executor": "Run",
+    "Application.Unnamed.executor": "Run",
     "DefaultHtmlFileTemplate": "HTML File",
     "JavaScript Debug.cartPage.html.executor": "Run",
     "JavaScript Debug.frontPage.html.executor": "Run",
@@ -116,26 +101,45 @@
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "dart.analysis.tool.window.visible": "false",
-    "git-widget-placeholder": "haziq/fix/node.js-to-react.js",
+    "git-widget-placeholder": "haziq/backend/adding-java-servlet",
     "junie.onboarding.icon.badge.shown": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/haziq/Downloads/ComputerSciences/SEM 3/CAT201/IntelliJ/Assignmen_JoZiq/CAT201_Project/react-frontend/src",
+    "last_opened_file_path": "C:/Users/haziq/Downloads/ComputerSciences/SEM 3/CAT201/IntelliJ/Assignmen_JoZiq/CAT201_Project/java-backend",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
     "to.speed.mode.migration.done": "true",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\haziq\Downloads\ComputerSciences\SEM 3\CAT201\IntelliJ\Assignmen_JoZiq\CAT201_Project\java-backend" />
       <recent name="C:\Users\haziq\Downloads\ComputerSciences\SEM 3\CAT201\IntelliJ\Assignmen_JoZiq\CAT201_Project\react-frontend\src" />
       <recent name="C:\Users\haziq\Downloads\ComputerSciences\SEM 3\CAT201\IntelliJ\Assignmen_JoZiq\CAT201_Project\react-frontend\src\style" />
       <recent name="C:\Users\haziq\Downloads\ComputerSciences\SEM 3\CAT201\IntelliJ\Assignmen_JoZiq\CAT201_Project\react-frontend\src\pages" />
       <recent name="C:\Users\haziq\Downloads\ComputerSciences\SEM 3\CAT201\IntelliJ\Assignmen_JoZiq\CAT201_Project" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\haziq\Downloads\ComputerSciences\SEM 3\CAT201\IntelliJ\Assignmen_JoZiq\CAT201_Project\java-backend\src\Data" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="19" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="com.kakigamerz.Main" />
+      <module name="backend" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/java-backend" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -174,6 +178,17 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Change airil name" />
