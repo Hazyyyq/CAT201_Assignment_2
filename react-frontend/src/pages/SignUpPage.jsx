@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom'; // Import useNavigate for redirection
+import { Link, useNavigate } from 'react-router-dom'; 
 import styles from '../style/AuthPage.module.css';
 import { API_BASE_URL } from '../config';
 
 const SignupPage = () => {
-    const navigate = useNavigate(); // Hook to move user to Login page after success
+    const navigate = useNavigate(); 
 
-    // 1. STATE: Store the input values
+    
     const [formData, setFormData] = useState({
         username: '',
         email: '',
@@ -14,7 +14,7 @@ const SignupPage = () => {
         confirmPassword: ''
     });
 
-    // 2. HANDLER: Update state when user types
+   
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData(prevState => ({
@@ -23,24 +23,24 @@ const SignupPage = () => {
         }));
     };
 
-    // 3. SUBMIT: Send data to Java Backend
+    
     const handleSignup = async (e) => {
-        e.preventDefault(); // Stop page refresh
+        e.preventDefault(); 
 
-        // Basic Validation
+        
         if (formData.password !== formData.confirmPassword) {
             alert("Passwords do not match!");
             return;
         }
 
         try {
-            // Note: Use your Render URL if deployed, or localhost if testing locally
+            
             const response = await fetch(`${API_BASE_URL}/api/signup`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                // Map form data to your Java User class fields (name, email, password)
+                
                 body: JSON.stringify({
                     name: formData.username,
                     email: formData.email,
@@ -50,7 +50,7 @@ const SignupPage = () => {
 
             if (response.ok) {
                 alert("Account created successfully!");
-                navigate('/login'); // Redirect to login page
+                navigate('/login'); 
             } else {
                 const data = await response.json();
                 alert(data.message || "Registration failed");
@@ -71,14 +71,14 @@ const SignupPage = () => {
             </nav>
 
             <div className={styles.wrapper}>
-                {/* 4. Connect the form to the handler */}
+                
                 <form onSubmit={handleSignup}>
                     <h1>Sign Up</h1>
 
                     <div className={styles['input-box']}>
                         <input
                             type="username"
-                            name="username" // Name matches state key
+                            name="username" 
                             placeholder="Username"
                             value={formData.username}
                             onChange={handleChange}
