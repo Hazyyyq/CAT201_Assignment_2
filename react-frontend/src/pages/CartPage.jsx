@@ -85,28 +85,17 @@ const CartPage = () => {
                     <div className="nav-links desktop-menu">
                         <Link to="/">Continue Shopping</Link>
                     </div>
-
-                    {/* Cart Icon with Dynamic Badge */}
-                    <Link to="/cart" className="cart-icon-container">
-                        <span
-                            className="fa-stack fa-lg"
-                            data-count={cartCount}
-                        >
-                            <i className="fa fa-circle fa-stack-2x"></i>
-                            <i className="fa fa-shopping-cart fa-stack-1x fa-inverse"></i>
-                        </span>
-                    </Link>
-
+                </div>
                     <div className="sidebar" onClick={() => setIsOpen(!isOpen)}>
                         <i className={`fa ${isOpen ? "fa-times" : "fa-bars"}`}></i>
                     </div>
-                </div>
+
+
             </nav>
 
             {/* Mobile Menu */}
             <div className={`mobile-nav-overlay ${isOpen ? 'active' : ''}`}>
                 <Link to="/" onClick={() => setIsOpen(false)}>Home</Link>
-                <Link to="/" onClick={() => setIsOpen(false)}>Shop</Link>
             </div>
 
             {/* Main Content */}

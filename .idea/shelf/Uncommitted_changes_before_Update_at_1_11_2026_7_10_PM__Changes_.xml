@@ -1,0 +1,39 @@
+<changelist name="Uncommitted_changes_before_Update_at_1_11_2026_7_10_PM_[Changes]" date="1768129844927" recycled="false" toDelete="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_11_2026_7_10_PM_[Changes]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 1/11/2026 7:10 PM [Changes]" />
+  <binary>
+    <option name="BEFORE_PATH" value="java-backend/target/classes/com/kakigamerz/ProductServlet.class" />
+    <option name="AFTER_PATH" value="java-backend/target/classes/com/kakigamerz/ProductServlet.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_11_2026_7_10_PM_[Changes]/ProductServlet.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="java-backend/target/classes/com/kakigamerz/CheckoutServlet$1.class" />
+    <option name="AFTER_PATH" value="java-backend/target/classes/com/kakigamerz/CheckoutServlet$1.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_11_2026_7_10_PM_[Changes]/CheckoutServlet$1.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="java-backend/target/classes/com/kakigamerz/CorsFilter.class" />
+    <option name="AFTER_PATH" value="java-backend/target/classes/com/kakigamerz/CorsFilter.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_11_2026_7_10_PM_[Changes]/CorsFilter.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="java-backend/target/classes/com/kakigamerz/SignUpServlet$1.class" />
+    <option name="AFTER_PATH" value="java-backend/target/classes/com/kakigamerz/SignUpServlet$1.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_11_2026_7_10_PM_[Changes]/SignUpServlet$1.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="java-backend/target/classes/com/kakigamerz/ProductServlet$1.class" />
+    <option name="AFTER_PATH" value="java-backend/target/classes/com/kakigamerz/ProductServlet$1.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_11_2026_7_10_PM_[Changes]/ProductServlet$1.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="java-backend/target/classes/com/kakigamerz/LoginServlet$1.class" />
+    <option name="AFTER_PATH" value="java-backend/target/classes/com/kakigamerz/LoginServlet$1.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_11_2026_7_10_PM_[Changes]/LoginServlet$1.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="java-backend/target/classes/com/kakigamerz/Main.class" />
+    <option name="AFTER_PATH" value="java-backend/target/classes/com/kakigamerz/Main.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_11_2026_7_10_PM_[Changes]/Main.class" />
+  </binary>
+</changelist>

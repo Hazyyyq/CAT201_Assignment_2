@@ -114,6 +114,13 @@ const GamesPage = () => {
                 </div>
             </nav>
 
+            <div className={`mobile-nav-overlay ${isOpen ? 'active' : ''}`}>
+                <Link to="/cart" style={{color: '#0071e3', fontWeight: 'bold', textDecoration: 'none'}}>
+                    Cart (<span id="cart-count">{cartCount}</span>)
+                </Link>
+                <Link to="/" style={{color: '#ccc', textDecoration: 'none', marginRight: '20px'}}>Home</Link>
+                <div style={{ width: '60%', height: '1px', background: 'rgba(255,255,255,0.2)', margin: '10px 0' }}></div>
+            </div>
             {/* --- HERO SECTION (Local Styles) --- */}
             <header className={styles.hero}>
                 <div className={styles['hero-content']}>

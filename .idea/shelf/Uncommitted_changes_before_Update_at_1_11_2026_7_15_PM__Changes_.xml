@@ -1,0 +1,58 @@
+<changelist name="Uncommitted_changes_before_Update_at_1_11_2026_7_15_PM_[Changes]" date="1768130126665" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_11_2026_7_15_PM_[Changes]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 1/11/2026 7:15 PM [Changes]" />
+  <binary>
+    <option name="BEFORE_PATH" value="java-backend/target/classes/com/kakigamerz/User.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="java-backend/target/classes/com/kakigamerz/LoginServlet.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="java-backend/target/classes/com/kakigamerz/CheckoutServlet$1.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="java-backend/target/classes/com/kakigamerz/SignUpServlet$1.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="java-backend/target/classes/com/kakigamerz/Checkout$CartItem.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="java-backend/target/classes/com/kakigamerz/Checkout.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="java-backend/target/classes/com/kakigamerz/CheckoutServlet.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="java-backend/target/classes/com/kakigamerz/Product$Spec.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="java-backend/target/classes/com/kakigamerz/ProductServlet$1.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="java-backend/target/classes/com/kakigamerz/Product$Color.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="java-backend/target/classes/com/kakigamerz/GameServlet.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="java-backend/target/classes/com/kakigamerz/ProductServlet.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="java-backend/target/classes/com/kakigamerz/CorsFilter.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="java-backend/target/classes/com/kakigamerz/Main.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="java-backend/target/classes/com/kakigamerz/SignUpServlet.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="java-backend/target/classes/com/kakigamerz/Game.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="java-backend/target/classes/com/kakigamerz/Product.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="java-backend/target/classes/com/kakigamerz/LoginServlet$1.class" />
+  </binary>
+</changelist>
