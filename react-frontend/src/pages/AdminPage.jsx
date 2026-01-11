@@ -5,13 +5,13 @@ import { API_BASE_URL } from '../config';
 
 const AdminPage = () => {
 
-    // --- 1. STATE ---
+    
     const [products, setProducts] = useState([]);
     const [currentCategory, setCurrentCategory] = useState('all');
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isOpen, setIsOpen] = useState(false); // Sidebar toggle
 
-    // Form States
+    
     const [isEditing, setIsEditing] = useState(false);
     const [editId, setEditId] = useState(null);
     const [formData, setFormData] = useState({
@@ -20,7 +20,7 @@ const AdminPage = () => {
     const [fileName, setFileName] = useState("No file chosen");
     const [previewImage, setPreviewImage] = useState("");
 
-    // --- 2. INITIAL LOAD ---
+    
     useEffect(() => {
         fetchProducts();
     }, []);
@@ -35,7 +35,7 @@ const AdminPage = () => {
         }
     };
 
-    // --- 3. HANDLERS ---
+   
     const filteredProducts = currentCategory === 'all' ? products : products.filter(p => p.category === currentCategory);
 
     const handleDelete = async (id) => {
@@ -86,7 +86,7 @@ const AdminPage = () => {
         }
     };
 
-    // --- MODAL HELPERS ---
+    
     const openModal = (mode, product = null) => {
         setIsModalOpen(true);
         if (mode === 'edit' && product) {
@@ -145,30 +145,30 @@ const AdminPage = () => {
         setFormData(prev => ({...prev, [keyMap[id]]: value}));
     };
 
-    // --- RENDER ---
+    
     return (<div className="dark-theme">
-        {/* Global Nav */}
+        {}
         <nav className="nav">
             <Link to="/" className="logo">
                 KAKI GAMERZ-ADMIN<span className="dot"></span>
             </Link>
 
-            {/* DESKTOP: Show Store Front link on the right. Hidden on Mobile. */}
+            {}
             <div className="nav-links desktop-menu" style={{ marginLeft: 'auto' }}>
                 <Link to="/" style={{ color: '#fff', fontWeight: 'bold' }}>Store Front</Link>
             </div>
 
-            {/* REMOVED the "Admin Mode" badge here */}
+            {}
 
-            {/* MOBILE: Show Sidebar Icon. Hidden on Desktop (via CSS). */}
+            {}
             <div className="sidebar" onClick={() => setIsOpen(!isOpen)}>
                 <i className={`fa ${isOpen ? "fa-times" : "fa-bars"}`}></i>
             </div>
         </nav>
 
-        {/* --- MOBILE SIDEBAR MENU --- */}
+        {}
         <div className={`mobile-nav-overlay ${isOpen ? 'active' : ''}`}>
-            {/* Store Front Link (Mobile Only) */}
+            {}
             <Link to="/" onClick={() => setIsOpen(false)} style={{ color: '#fff', fontSize: '1.5rem', fontFamily: 'DotGothic16, sans-serif' }}>
                 Store Front
             </Link>
