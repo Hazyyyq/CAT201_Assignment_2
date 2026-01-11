@@ -3,7 +3,7 @@ package com.kakigamerz;
 import java.util.List;
 
 public class Product {
-    // 1. Make all data PRIVATE
+    
     private long id;
     private String name;
     private String category;
@@ -16,7 +16,7 @@ public class Product {
     private List<Spec> specs;
     private List<Color> colors;
 
-    // 2. Add Getters and Setters
+   
     public long getId() { return id; }
     public void setId(long id) { this.id = id; }
 
@@ -50,8 +50,7 @@ public class Product {
     public List<Color> getColors() { return colors; }
     public void setColors(List<Color> colors) { this.colors = colors; }
 
-    // Inner classes can stay simple, or you can encapsulate them too.
-    // Keeping them public is okay for simple DTOs, but private is better.
+   
     public static class Spec {
         public String icon;
         public String label;
