@@ -9,12 +9,12 @@ function FrontPage() {
     const [isOpen, setIsOpen] = useState(false);
     const [cartCount, setCartCount] = useState(0);
 
-    // --- STATE FOR DYNAMIC PRODUCTS ---
+  
     const [newArrivals, setNewArrivals] = useState([]);
 
     const location = useLocation();
 
-    // 1. Load User
+    
     useEffect(() => {
         const storedUser = localStorage.getItem('currentUser');
         if (storedUser) {
@@ -22,13 +22,13 @@ function FrontPage() {
         }
     }, []);
 
-    // 2. Load Cart Count
+   
     useEffect(() => {
         const storedCart = JSON.parse(localStorage.getItem('kakiCart')) || [];
         setCartCount(storedCart.length);
     }, []);
 
-    // 3. FETCH LATEST PRODUCTS (FRESH DROPS)
+ 
     useEffect(() => {
         fetch(`${API_BASE_URL}/api/products`)
             .then(res => res.json())
@@ -42,7 +42,7 @@ function FrontPage() {
             .catch(err => console.error("Error loading new arrivals:", err));
     }, []);
 
-    // 4. Scroll Reveal Logic
+   
     useEffect(() => {
         if (location.hash) {
             const element = document.querySelector(location.hash);
@@ -91,7 +91,7 @@ function FrontPage() {
                 KAKI GAMERZ<span className="dot"></span>
             </Link>
 
-            {/* DESKTOP MENU (Hidden on Mobile) */}
+           
             <div className="nav-links desktop-menu">
                 <Link to="/#phone" onClick={(e) => scrollToSection(e, 'phone')}>KakiPhone</Link>
                 <Link to="/#watch" onClick={(e) => scrollToSection(e, 'watch')}>KakiWatch</Link>
@@ -107,7 +107,7 @@ function FrontPage() {
                 <Link to="/#about" onClick={(e) => scrollToSection(e, 'about')}>About Us</Link>
             </div>
 
-            {/* DESKTOP ACTIONS (Cart/Login - Hidden on Mobile via CSS) */}
+            
             <div className="nav-actions">
                 <Link to="/cart" className="cart-icon-container">
                     <span
@@ -142,16 +142,16 @@ function FrontPage() {
                 </div>
             </div>
 
-            {/* HAMBURGER ICON (Visible only on Mobile) */}
+            
             <div className="sidebar" onClick={() => setIsOpen(!isOpen)}>
                 <i className={`fa ${isOpen ? "fa-times" : "fa-bars"}`}></i>
             </div>
         </nav>
 
-        {/* --- MOBILE SIDEBAR OVERLAY --- */}
+        
         <div className={`mobile-nav-overlay ${isOpen ? 'active' : ''}`}>
 
-            {/* 1. Main Navigation */}
+            
             <Link to="/#phone" onClick={(e) => { setIsOpen(false); scrollToSection(e, 'phone'); }}>KakiPhone</Link>
             <Link to="/#watch" onClick={(e) => { setIsOpen(false); scrollToSection(e, 'watch'); }}>KakiWatch</Link>
             <Link to="/#tablet" onClick={(e) => { setIsOpen(false); scrollToSection(e, 'tablet'); }}>KakiPad</Link>
@@ -165,24 +165,24 @@ function FrontPage() {
             <Link to="/#games" onClick={(e) => { setIsOpen(false); scrollToSection(e, 'games'); }}>Games</Link>
             <Link to="/#about" onClick={(e) => { setIsOpen(false); scrollToSection(e, 'about'); }}>About Us</Link>
 
-            {/* 2. Divider Line (If you don't see this, the code isn't updating!) */}
+            
             <div style={{ width: '60%', height: '1px', background: 'rgba(255,255,255,0.2)', margin: '10px 0' }}></div>
 
-            {/* 3. USER ACTIONS (Mobile) */}
+            
 
-            {/* Mobile Cart */}
+            
             <Link to="/cart" onClick={() => setIsOpen(false)} style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none', color: '#fff', fontSize: '1.2rem', fontFamily: 'DotGothic16, sans-serif' }}>
                 CART <span style={{ background: '#ff4747', padding: '2px 8px', borderRadius: '10px', fontSize: '0.9rem', color: 'white', fontWeight:'bold', fontFamily: 'sans-serif' }}>{cartCount}</span>
             </Link>
 
-            {/* Mobile Admin Panel */}
+            
             {user && user.role === 'admin' && (
                 <Link to="/admin" onClick={() => setIsOpen(false)} style={{ color: '#0071e3', fontWeight: 'bold', fontSize: '1.2rem', fontFamily: 'DotGothic16, sans-serif', marginTop: '10px', textDecoration: 'none' }}>
                     ADMIN PANEL
                 </Link>
             )}
 
-            {/* Mobile Login/Logout (STYLED BUTTONS) */}
+            
             {user ? (
                 <button
                     onClick={() => {
@@ -223,7 +223,7 @@ function FrontPage() {
             )}
         </div>
 
-        {/* --- REST OF THE PAGE CONTENT --- */}
+       
         <section id="home" className={`${styles['hero-section']} ${styles['dark-theme']} ${styles['short-hero']}`}>
             <img
                 src="https://i.pinimg.com/originals/cd/f4/95/cdf4951a69fe542e2b7d6a07aa234a1b.gif"
