@@ -4,6 +4,9 @@ A repository for CAT201 Project. This project features a dynamic webpage with a 
 ## 🔗 Kaki Gamerz Website Link
 [https://kakigamerz-frontend.onrender.com](https://kakigamerz-frontend.onrender.com)
 
+> **⚠️ Important Note**
+> This link hosts the **frontend only**. Since the backend is not connected to this deployment, features requiring data processing or fetching will not function. Consequently, some pages may appear empty or incomplete.
+
 ---
 
 ## [STEP 1] Run Locally (Backend)
