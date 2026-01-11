@@ -34,11 +34,11 @@ public class LoginServlet extends HttpServlet {
 
         if (users != null) {
             for (User u : users) {
-                // OOP FIX: Use Getters for comparison
+                
                 if (u.getEmail().equals(loginAttempt.getEmail()) &&
                         u.getPassword().equals(loginAttempt.getPassword())) {
 
-                    // OOP FIX: Use Setter to clear password
+                   
                     u.setPassword(null);
 
                     String userJson = gson.toJson(u);
