@@ -150,7 +150,7 @@ const GamesPage = () => {
                         <p style={{color:'white'}}>Loading games...</p>
                     ) : (
                         currentGames.map((game, index) => {
-                            /
+                            
                             let badgeClass = styles['discount-badge'];
                             if(game.badge === 'NEW') badgeClass += ` ${styles.new}`;
 
