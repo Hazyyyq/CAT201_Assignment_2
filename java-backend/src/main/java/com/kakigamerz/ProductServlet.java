@@ -19,7 +19,7 @@ public class ProductServlet extends HttpServlet {
     private final File jsonFile = new File("src/Data/products.json");
     private final Gson gson = new Gson();
 
-    // --- 1. GET: Read all products ---
+   
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("application/json");
@@ -30,7 +30,7 @@ public class ProductServlet extends HttpServlet {
 
         if (categoryFilter != null && !categoryFilter.isEmpty()) {
             List<Product> filteredProducts = allProducts.stream()
-                    // OOP FIX: Use .getCategory() instead of .category
+                    
                     .filter(p -> p.getCategory() != null && p.getCategory().equalsIgnoreCase(categoryFilter))
                     .collect(Collectors.toList());
 
@@ -40,13 +40,13 @@ public class ProductServlet extends HttpServlet {
         }
     }
 
-    // --- 2. POST: Add a new product ---
+   
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Product newProduct = gson.fromJson(req.getReader(), Product.class);
         List<Product> products = readProducts();
 
-        // OOP FIX: Use .getId() and .setId()
+        
         if (newProduct.getId() == 0) {
             newProduct.setId(System.currentTimeMillis());
         }
@@ -58,7 +58,7 @@ public class ProductServlet extends HttpServlet {
         resp.getWriter().write("{\"message\": \"Product added successfully\", \"id\": " + newProduct.getId() + "}");
     }
 
-    // --- 3. PUT: Edit an existing product ---
+    
     @Override
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Product updatedData = gson.fromJson(req.getReader(), Product.class);
@@ -67,10 +67,10 @@ public class ProductServlet extends HttpServlet {
         boolean found = false;
         for (Product existing : products) {
 
-            // OOP FIX: Use getters to compare ID
+            
             if (existing.getId() == updatedData.getId()) {
 
-                // --- MERGE LOGIC (Using Setters) ---
+                
                 existing.setName(updatedData.getName());
                 existing.setCategory(updatedData.getCategory());
                 existing.setStock(updatedData.getStock());
@@ -80,8 +80,7 @@ public class ProductServlet extends HttpServlet {
                 existing.setDesc(updatedData.getDesc());
                 existing.setImage(updatedData.getImage());
 
-                // We deliberately do NOT update specs/colors here to preserve them
-                // unless you want to update them too.
+                
 
                 found = true;
                 break;
@@ -98,7 +97,7 @@ public class ProductServlet extends HttpServlet {
         }
     }
 
-    // --- 4. DELETE: Remove a product ---
+    
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String idParam = req.getParameter("id");
@@ -110,7 +109,7 @@ public class ProductServlet extends HttpServlet {
         long idToDelete = Long.parseLong(idParam);
         List<Product> products = readProducts();
 
-        // OOP FIX: Use .getId() in filter
+        
         List<Product> remainingProducts = products.stream()
                 .filter(p -> p.getId() != idToDelete)
                 .collect(Collectors.toList());
@@ -121,7 +120,7 @@ public class ProductServlet extends HttpServlet {
         resp.getWriter().write("{\"message\": \"Product deleted\"}");
     }
 
-    // --- Helpers ---
+    
     private List<Product> readProducts() throws IOException {
         if (!jsonFile.exists()) return new ArrayList<>();
         String content = Files.readString(jsonFile.toPath(), StandardCharsets.UTF_8);
