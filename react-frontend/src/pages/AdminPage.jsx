@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import styles from '../style/AdminPage.module.css';
+import { API_BASE_URL } from '../config';
 
 const AdminPage = () => {
 
@@ -26,7 +27,7 @@ const AdminPage = () => {
 
     const fetchProducts = async () => {
         try {
-            const res = await fetch('http://localhost:8080/api/products');
+            const res = await fetch(`${API_BASE_URL}/api/products`);
             const data = await res.json();
             setProducts(data);
         } catch (error) {
@@ -40,7 +41,7 @@ const AdminPage = () => {
     const handleDelete = async (id) => {
         if (window.confirm("Are you sure you want to delete this product?")) {
             try {
-                await fetch(`http://localhost:8080/api/products?id=${id}`, {
+                await fetch(`${API_BASE_URL}/api/products?id=${id}`, {
                     method: 'DELETE'
                 });
                 fetchProducts();
@@ -68,11 +69,11 @@ const AdminPage = () => {
 
         try {
             if (isEditing) {
-                await fetch('http://localhost:8080/api/products', {
+                await fetch(`${API_BASE_URL}/api/products`, {
                     method: 'PUT', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(productData)
                 });
             } else {
-                await fetch('http://localhost:8080/api/products', {
+                await fetch(`${API_BASE_URL}/api/products`, {
                     method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(productData)
                 });
             }

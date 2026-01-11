@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styles from '../style/CartPage.module.css';
+import { API_BASE_URL } from '../config';
 
 const CartPage = () => {
     const [cartItems, setCartItems] = useState([]);
@@ -48,7 +49,7 @@ const CartPage = () => {
 
         try {
             // 1. Send the cart data to your Java CheckoutServlet
-            const response = await fetch('http://localhost:8080/api/checkout', {
+            const response = await fetch(`${API_BASE_URL}/api/checkout`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ items: cartItems })

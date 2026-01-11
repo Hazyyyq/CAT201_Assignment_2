@@ -2,6 +2,7 @@ import {useEffect, useState} from 'react';
 import {Link, useLocation} from 'react-router-dom';
 import styles from '../style/FrontPage.module.css';
 import Footer from "../components/Footer.jsx";
+import { API_BASE_URL } from '../config';
 
 function FrontPage() {
     const [user, setUser] = useState(null);
@@ -29,7 +30,7 @@ function FrontPage() {
 
     // 3. FETCH LATEST PRODUCTS (FRESH DROPS)
     useEffect(() => {
-        fetch('http://localhost:8080/api/products')
+        fetch(`${API_BASE_URL}/api/products`)
             .then(res => res.json())
             .then(data => {
                 const latest = data

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import styles from '../style/AuthPage.module.css';
+import { API_BASE_URL } from '../config';
 
 const LoginPage = () => {
     const navigate = useNavigate();
@@ -15,7 +16,7 @@ const LoginPage = () => {
 
         try {
             // Use 127.0.0.1 to match your working Signup configuration
-            const response = await fetch('http://127.0.0.1:8080/api/login', {
+            const response = await fetch(`${API_BASE_URL}/api/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

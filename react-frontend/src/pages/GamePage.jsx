@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styles from '../style/GamePage.module.css';
+import { API_BASE_URL } from '../config';
 
 const GamesPage = () => {
     // --- SETTINGS & STATE ---
@@ -21,7 +22,7 @@ const GamesPage = () => {
 
         // Fetch JSON (Reverted to your original fetch code)
         // Note: Ensure games.json is accessible at this URL from the browser
-        fetch('http://localhost:8080/api/products?category=Games')
+        fetch(`${API_BASE_URL}/api/products?category=Games`)
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');

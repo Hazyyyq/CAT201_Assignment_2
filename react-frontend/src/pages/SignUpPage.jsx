@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom'; // Import useNavigate for redirection
 import styles from '../style/AuthPage.module.css';
+import { API_BASE_URL } from '../config';
 
 const SignupPage = () => {
     const navigate = useNavigate(); // Hook to move user to Login page after success
@@ -34,7 +35,7 @@ const SignupPage = () => {
 
         try {
             // Note: Use your Render URL if deployed, or localhost if testing locally
-            const response = await fetch('http://localhost:8080/api/signup', {
+            const response = await fetch(`${API_BASE_URL}/api/signup`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

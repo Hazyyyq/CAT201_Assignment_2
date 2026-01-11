@@ -14,9 +14,16 @@ public class CorsFilter implements Filter {
         // --- DEBUG: PROOF OF LIFE ---
         System.out.println("🔥 CORS FILTER HIT: " + request.getMethod() + " request from " + request.getHeader("Origin"));
         // -----------------------------
+        String localFrontend = "http://localhost:3000";
+        String cloudFrontend = "https://your-frontend-name.onrender.com";
 
+        String origin = request.getHeader("Origin");
+        System.out.println("Your origin:" + origin);
         // ALLOW EVERYONE (for development only)
-        response.setHeader("Access-Control-Allow-Origin", "*");
+        if ("http://localhost:5173".equals(origin)) { // for local run
+            response.setHeader("Access-Control-Allow-Origin", "*");
+        }
+
         response.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
         response.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization, Origin, Accept");
         response.setHeader("Access-Control-Allow-Credentials", "true");
